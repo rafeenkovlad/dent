@@ -1,0 +1,28 @@
+{
+    "name": "dental/db",
+    "description": "connect dental company and worker database",
+    "authors": [
+        {
+            "name": "Владислав",
+            "email": "rafeenkovlad@gmail.com"
+        }
+    ],
+    "require": {
+    },
+    "autoload": {
+        "psr-4":{
+            "Dbdental\\db\\": "dbdental",
+            "Dbdental\\reg\\": "dbdental",
+            "FunctionCommand\\": "",
+            "Dbdental\\company\\": "dbdental",
+            "Dbdental\\worker\\": "dbdental",
+            "Test\\": "",
+            "ListCSV\\": "csv",
+            "Dbdental\\img\\": "",
+            "Outpost\\": "",
+            "Author\\rait\\": "",
+            "Dbdental\\like\\": "dbdental",
+            "Dbdental\\chat\\": "dbdental"
+        }
+    }
+}
