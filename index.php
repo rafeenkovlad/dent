@@ -9,7 +9,7 @@ $db = Connect::getConnect();
 $func = new Functions();
 
 //  отправляем данные о регистрации
-$_REQUEST['nameReg'] = '    sds1ssss';
+$_REQUEST['nameReg'] = 'vlad vlad';
 $_REQUEST['pass'] = '!12345678Az';
 $_REQUEST['retryPass'] = '!12345678Az';
 $func->dataReg($_REQUEST['nameReg'], $_REQUEST['pass'], $_REQUEST['retryPass']);

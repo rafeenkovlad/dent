@@ -133,11 +133,14 @@ class Functions
     public function regWorker($db)
     {
         $reg = new Reg($this->nameReg, $this->pass, $this->retryPass);//сотрудник / пароль / подтверждение
-        $reg->warningValid($reg->validInput());//проверка регистрационных данных
-        $ver = $db->prepare($reg->setRegWorker());
-        $ver->execute(['worker' => $reg->company, 'pass' => md5($reg->password), 'name' => $reg->company]); //вставка регистрационных данных компании в бд
-        $insertId = $db->prepare($reg->setIdWorker());
-        $insertId->execute(['id' => $db->lastInsertId()]);
+        $arr = $reg->warningValid($reg->validInput());//проверка регистрационных данных
+        if($arr[0] == 1 && $arr[1] == 1)
+        {
+            $ver = $db->prepare($reg->setRegWorker());
+            $ver->execute(['worker' => $reg->company, 'pass' => md5($reg->password), 'name' => $reg->company]); //вставка регистрационных данных компании в бд
+            $insertId = $db->prepare($reg->setIdWorker());
+            $insertId->execute(['id' => $db->lastInsertId()]);
+        }
     }
 
 //Принимаем данные о сотрудике

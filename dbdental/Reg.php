@@ -16,7 +16,7 @@ class Reg{
 
     //Регулярное выражение для проверки поля имени компании или пользователя и пароля
     public function validInput(){
-        return [preg_match('/[^\s]/', $this->company), preg_match('/(?=.*[0-9])(?=.*[!@#$%^&*])(?=.*[a-z])(?=.*[A-Z])/', $this->password)];
+        return [preg_match('/(?=^[^\s]\w+)(?=^\w+[^\s]$)/', $this->company), preg_match('/(?=.*[0-9])(?=.*[!@#$%^&*])(?=.*[a-z])(?=.*[A-Z])/', $this->password)];
 
     }
     //Предупреждение о несоответсвии проверки регулярному выражению
