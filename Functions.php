@@ -133,7 +133,7 @@ class Functions
     public function regWorker($db)
     {
         $reg = new Reg($this->nameReg, $this->pass, $this->retryPass);//сотрудник / пароль / подтверждение
-        print_r($reg->validInput());//проверка регистрационных данных
+        $reg->warningValid($reg->validInput());//проверка регистрационных данных
         $ver = $db->prepare($reg->setRegWorker());
         $ver->execute(['worker' => $reg->company, 'pass' => md5($reg->password), 'name' => $reg->company]); //вставка регистрационных данных компании в бд
         $insertId = $db->prepare($reg->setIdWorker());

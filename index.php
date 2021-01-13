@@ -7,14 +7,14 @@ use FunctionCommand\Functions;
 
 $db = Connect::getConnect();
 $func = new Functions();
-/*
+
 //  отправляем данные о регистрации
-$_REQUEST['nameReg'] = '1ssqwscasafSsssss';
-$_REQUEST['pass'] = '12345678Azrt~!+';
-$_REQUEST['retryPass'] = '12345678Azrt~!+';
+$_REQUEST['nameReg'] = '    sds1ssss';
+$_REQUEST['pass'] = '!12345678Az';
+$_REQUEST['retryPass'] = '!12345678Az';
 $func->dataReg($_REQUEST['nameReg'], $_REQUEST['pass'], $_REQUEST['retryPass']);
-$func->regCompany($db);
-print_r($db->lastInsertId()); */
+$func->regWorker($db);
+print_r($db->lastInsertId());
 
 /*//Запись данных о сотруднике
 $func->dataWorker(['name', 'dolgnost', 'contacti' , 76 ]);
@@ -69,7 +69,7 @@ $func->nonAuthPost($db);
 $like = $func->likeAuth($db, get_current_user_id());
 
 //Создаем чат между пользователями
-$func->newChat($db, get_current_user_id(), get_the_ID());
+//$func->newChat($db, get_current_user_id(), get_the_ID());
 //получаем список открытых чатов
 $func->listChat($db, get_current_user_id());
 //Входим в чат комнату

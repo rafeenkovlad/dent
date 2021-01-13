@@ -14,10 +14,21 @@ class Reg{
         $this->retrypass = $retry;
     }
 
-    //Регулярное выражение для проверки поля имени компании или пользователя
+    //Регулярное выражение для проверки поля имени компании или пользователя и пароля
     public function validInput(){
-        return [preg_match('/[^\S]/', $this->company), preg_match('/(?=.*[0-9])(?=.*[!@#$%^&*])(?=.*[a-z])(?=.*[A-Z])/', $this->pass)];
+        return [preg_match('/[^\s]/', $this->company), preg_match('/(?=.*[0-9])(?=.*[!@#$%^&*])(?=.*[a-z])(?=.*[A-Z])/', $this->password)];
 
+    }
+    //Предупреждение о несоответсвии проверки регулярному выражению
+    public function warningValid($arr){
+        if ($arr[0] == 0)
+        {
+            print_r('Поле username не должно содержать пробелов или табуляций!');
+        }
+        if ($arr[1] == 0)
+        {
+            print_r('Поле password должно содержать по одной и больше заглавной и строчной букве, одной и больше цифре и хотя бы один из следуюших символов !@#$%^&*');
+        }
     }
     
     public function setRegCompany(){
@@ -26,13 +37,13 @@ class Reg{
         $login->execute(['name' => $this->company]);
         
         if($login->fetch()['user_login'] == $this->company){
-            exit('Пользователь уже существуеadт.');
+            exit('Пользователь уже существует.');
         }
 
         if($this->password === $this->retrypass){
             return $this->query = "INSERT INTO wp_users (user_login, user_pass, user_nicename) VALUES (:company, :pass, :name)";
         }else{
-            exit('Набранные пароли не совпадаюyuт.');
+            exit('Набранные пароли не совпадаюyт.');
         }
 
         if(strlen($this->password)<6){
@@ -60,7 +71,7 @@ class Reg{
         if($this->password === $this->retrypass){
             return $this->query = "INSERT INTO wp_users (user_login, user_pass, user_nicename) VALUES (:worker, :pass, :name)";
         }else{
-            exit('Набранные пароли не совпадаnbmnbют.');
+            exit('Набранные пароли не совпадают.');
         }
 
         if(strlen($this->password)<6){
