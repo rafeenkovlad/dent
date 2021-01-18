@@ -1,0 +1,61 @@
+{
+    "_readme": [
+        "This file locks the dependencies of your project to a known state",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
+        "This file is @generated automatically"
+    ],
+    "content-hash": "1cea4895433077166f167c9d8b6f6f17",
+    "packages": [
+        {
+            "name": "mihanentalpo/fast-fuzzy-search",
+            "version": "v0.2.4",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/MihanEntalpo/FastFuzzySearch.git",
+                "reference": "9eb3b00f1e97866f39f95efdbdf9af94df9b7772"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/MihanEntalpo/FastFuzzySearch/zipball/9eb3b00f1e97866f39f95efdbdf9af94df9b7772",
+                "reference": "9eb3b00f1e97866f39f95efdbdf9af94df9b7772",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^5.3.5 || ^7.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Mihanentalpo\\FastFuzzySearch\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Mikhail Rubin",
+                    "email": "mihanentalpo@yandex.ru",
+                    "homepage": "https://mihanentalpo.me",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Fast fuzzy search in an array of strings for the most similiar ones",
+            "keywords": [
+                "compare",
+                "fuzzy",
+                "search"
+            ],
+            "time": "2017-08-20T13:58:49+00:00"
+        }
+    ],
+    "packages-dev": [],
+    "aliases": [],
+    "minimum-stability": "stable",
+    "stability-flags": [],
+    "prefer-stable": false,
+    "prefer-lowest": false,
+    "platform": [],
+    "platform-dev": []
+}

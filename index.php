@@ -9,14 +9,14 @@ $db = Connect::getConnect();
 $func = new Functions();
 
 //  отправляем данные о регистрации
-$_REQUEST['nameReg'] = 'vladvlad';
+$_REQUEST['nameReg'] = rand(1,9).rand(0,999).'vlavd';
 $_REQUEST['pass'] = '!12345678Az';
 $_REQUEST['retryPass'] = '!12345678Az';
 $func->dataReg($_REQUEST['nameReg'], $_REQUEST['pass'], $_REQUEST['retryPass']);
-$func->regWorker($db);
+$func->regCompany($db);
 print_r($db->lastInsertId());
 
-/*//Запись данных о сотруднике
+//Запись данных о сотруднике
 $func->dataWorker(['name', 'dolgnost', 'contacti' , 76 ]);
 $func->workerSet($db);
 
@@ -25,7 +25,7 @@ print_r($func->companyInfo($db, get_current_user_id())['name_company']);
 
 //запись данных о компании
 $func->dataCompany(['onedentук', 'test', 'test' ,'test', 73 ]);
-$func->companySet($db); */
+$func->companySet($db);
 
 //запись email компании
 $func->dataEmail('email@test.ru');
@@ -74,3 +74,9 @@ $like = $func->likeAuth($db, get_current_user_id());
 $func->listChat($db, get_current_user_id());
 //Входим в чат комнату
 $func->inChat($db, get_current_user_id(), $_REQUEST['room_id'], $_REQUEST['subject']);
+
+//Нечеткий поиск по имени
+print_r('test!!!!!');
+$_REQUEST['name_serach'] = 'onedent';
+$func->searchWorks('dent', $db);
+

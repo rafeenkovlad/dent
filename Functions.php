@@ -9,6 +9,7 @@ use Dbdental\img\Imgupload;
 use Outpost\HelpPost;
 use Author\rait\Authrait;
 use Dbdental\chat\Chat;
+use Dbdental\userinfo\Userinfo;
 
 class Functions
 {
@@ -33,11 +34,14 @@ class Functions
     public function regCompany($db)
     {
         $reg = new Reg($this->nameReg, $this->pass, $this->retryPass);//компаия / пароль / подтверждение
-        $ver = $db->prepare($reg->setRegCompany());
-        var_dump($reg->company);
-        $ver->execute(['company' => $reg->company, 'pass' => md5($reg->password), 'name' => $reg->company]);  //вставка регистрационных данных компании в бд
-        $insertId = $db->prepare($reg->setIdCompany());
-        $insertId->execute(['id' => $db->lastInsertId()]);
+        $arr = $reg->warningValid($reg->validInput());//проверка регистрационных данных
+        if($arr[0] == 1 && $arr[1] == 1) {
+            $ver = $db->prepare($reg->setRegCompany());
+            var_dump($reg->company);
+            $ver->execute(['company' => $reg->company, 'pass' => md5($reg->password), 'name' => $reg->company]);  //вставка регистрационных данных компании в бд
+            $insertId = $db->prepare($reg->setIdCompany());
+            $insertId->execute(['id' => $db->lastInsertId()]);
+        }
     }
 
 //получить данные компании
@@ -328,6 +332,24 @@ class Functions
         $textJson = '[' . preg_replace('/}{/xm', '},{', $textStr) . ']';
         $chat->arrMssg($textJson, $getName->fetch(\PDO::FETCH_NUM));
     }
+
+    //Нечеткий поиск по имени работника или названию компании
+    public function searchWorks($input, $db)
+    {
+        $getName = new Userinfo();
+
+        try {
+            $arr = $db->query($getName->getAllNames());
+            $search = $getName->search($arr->fetchAll(\PDO::FETCH_ASSOC), $input);
+            $urlinf = $getName->end($search);
+
+        }catch
+            (PDOException $e){
+            echo "error". $e->getMessage();
+        }
+
+    }
+
 }
 
 

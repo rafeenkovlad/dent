@@ -8,9 +8,11 @@ $baseDir = dirname($vendorDir);
 return array(
     'Test\\' => array($baseDir . '/'),
     'Outpost\\' => array($baseDir . '/'),
+    'Mihanentalpo\\FastFuzzySearch\\' => array($vendorDir . '/mihanentalpo/fast-fuzzy-search/src', $vendorDir . '/mihanentalpo/fast-fuzzy-search/src'),
     'ListCSV\\' => array($baseDir . '/csv'),
     'FunctionCommand\\' => array($baseDir . '/'),
     'Dbdental\\worker\\' => array($baseDir . '/dbdental'),
+    'Dbdental\\userinfo\\' => array($baseDir . '/dbdental'),
     'Dbdental\\reg\\' => array($baseDir . '/dbdental'),
     'Dbdental\\like\\' => array($baseDir . '/dbdental'),
     'Dbdental\\img\\' => array($baseDir . '/'),

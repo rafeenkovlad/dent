@@ -8,6 +8,7 @@
         }
     ],
     "require": {
+        "mihanentalpo/fast-fuzzy-search": "*"
     },
     "autoload": {
         "psr-4":{
@@ -22,7 +23,9 @@
             "Outpost\\": "",
             "Author\\rait\\": "",
             "Dbdental\\like\\": "dbdental",
-            "Dbdental\\chat\\": "dbdental"
+            "Dbdental\\chat\\": "dbdental",
+            "Dbdental\\userinfo\\": "dbdental",
+            "Mihanentalpo\\FastFuzzySearch\\": "vendor/mihanentalpo/fast-fuzzy-search/src/"
         }
     }
 }

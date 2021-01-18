@@ -15,6 +15,10 @@ class ComposerStaticInit0fc72c8767240f560261be6ff92fb5b7
         array (
             'Outpost\\' => 8,
         ),
+        'M' => 
+        array (
+            'Mihanentalpo\\FastFuzzySearch\\' => 29,
+        ),
         'L' => 
         array (
             'ListCSV\\' => 8,
@@ -26,6 +30,7 @@ class ComposerStaticInit0fc72c8767240f560261be6ff92fb5b7
         'D' => 
         array (
             'Dbdental\\worker\\' => 16,
+            'Dbdental\\userinfo\\' => 18,
             'Dbdental\\reg\\' => 13,
             'Dbdental\\like\\' => 14,
             'Dbdental\\img\\' => 13,
@@ -48,6 +53,11 @@ class ComposerStaticInit0fc72c8767240f560261be6ff92fb5b7
         array (
             0 => __DIR__ . '/../..' . '/',
         ),
+        'Mihanentalpo\\FastFuzzySearch\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/mihanentalpo/fast-fuzzy-search/src',
+            1 => __DIR__ . '/..' . '/mihanentalpo/fast-fuzzy-search/src',
+        ),
         'ListCSV\\' => 
         array (
             0 => __DIR__ . '/../..' . '/csv',
@@ -57,6 +67,10 @@ class ComposerStaticInit0fc72c8767240f560261be6ff92fb5b7
             0 => __DIR__ . '/../..' . '/',
         ),
         'Dbdental\\worker\\' => 
+        array (
+            0 => __DIR__ . '/../..' . '/dbdental',
+        ),
+        'Dbdental\\userinfo\\' => 
         array (
             0 => __DIR__ . '/../..' . '/dbdental',
         ),
@@ -98,9 +112,11 @@ class ComposerStaticInit0fc72c8767240f560261be6ff92fb5b7
         'Dbdental\\img\\Imgupload' => __DIR__ . '/../..' . '/Imgupload.php',
         'Dbdental\\like\\Rait' => __DIR__ . '/../..' . '/dbdental/Rait.php',
         'Dbdental\\reg\\Reg' => __DIR__ . '/../..' . '/dbdental/Reg.php',
+        'Dbdental\\userinfo\\Userinfo' => __DIR__ . '/../..' . '/dbdental/Userinfo.php',
         'Dbdental\\worker\\WorkerInfo' => __DIR__ . '/../..' . '/dbdental/WorkerInfo.php',
         'FunctionCommand\\Functions' => __DIR__ . '/../..' . '/Functions.php',
         'ListCSV\\GodsList' => __DIR__ . '/../..' . '/csv/GodsList.php',
+        'Mihanentalpo\\FastFuzzySearch\\FastFuzzySearch' => __DIR__ . '/..' . '/mihanentalpo/fast-fuzzy-search/src/FastFuzzySearch.php',
         'Outpost\\HelpPost' => __DIR__ . '/../..' . '/HelpPost.php',
         'Test\\Testt' => __DIR__ . '/../..' . '/Testt.php',
     );

@@ -13,9 +13,11 @@ return array(
     'Dbdental\\img\\Imgupload' => $baseDir . '/Imgupload.php',
     'Dbdental\\like\\Rait' => $baseDir . '/dbdental/Rait.php',
     'Dbdental\\reg\\Reg' => $baseDir . '/dbdental/Reg.php',
+    'Dbdental\\userinfo\\Userinfo' => $baseDir . '/dbdental/Userinfo.php',
     'Dbdental\\worker\\WorkerInfo' => $baseDir . '/dbdental/WorkerInfo.php',
     'FunctionCommand\\Functions' => $baseDir . '/Functions.php',
     'ListCSV\\GodsList' => $baseDir . '/csv/GodsList.php',
+    'Mihanentalpo\\FastFuzzySearch\\FastFuzzySearch' => $vendorDir . '/mihanentalpo/fast-fuzzy-search/src/FastFuzzySearch.php',
     'Outpost\\HelpPost' => $baseDir . '/HelpPost.php',
     'Test\\Testt' => $baseDir . '/Testt.php',
 );
