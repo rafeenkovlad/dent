@@ -8,7 +8,8 @@
         }
     ],
     "require": {
-        "mihanentalpo/fast-fuzzy-search": "*"
+        "mihanentalpo/fast-fuzzy-search": "*",
+        "lcobucci/jwt": "3.3.3"
     },
     "autoload": {
         "psr-4":{
@@ -25,7 +26,12 @@
             "Dbdental\\like\\": "dbdental",
             "Dbdental\\chat\\": "dbdental",
             "Dbdental\\userinfo\\": "dbdental",
-            "Mihanentalpo\\FastFuzzySearch\\": "vendor/mihanentalpo/fast-fuzzy-search/src/"
+            "Mihanentalpo\\FastFuzzySearch\\": "vendor/mihanentalpo/fast-fuzzy-search/src/",
+            "Form\\regform\\": "Form",
+            "Route\\rest\\": "route",
+            "Coderun\\ContentCabinet\\": "route/key",
+            "Lcobucci\\JWT\\": "vendor/lcobucci/jwt/src/"
+
         }
     }
 }

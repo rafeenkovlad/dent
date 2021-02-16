@@ -37,10 +37,9 @@ class Functions
         $arr = $reg->warningValid($reg->validInput());//проверка регистрационных данных
         if($arr[0] == 1 && $arr[1] == 1) {
             $ver = $db->prepare($reg->setRegCompany());
-            var_dump($reg->company);
             $ver->execute(['company' => $reg->company, 'pass' => md5($reg->password), 'name' => $reg->company]);  //вставка регистрационных данных компании в бд
-            $insertId = $db->prepare($reg->setIdCompany());
-            $insertId->execute(['id' => $db->lastInsertId()]);
+            var_dump($insertId = $db->prepare($reg->setIdCompany()));
+            var_dump($insertId->execute(['id' => $db->lastInsertId()]));
         }
     }
 

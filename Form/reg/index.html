@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html >
+<head>
+  <meta charset="UTF-8">
+  <title>Sign In/Up Form Transitions</title>
+  
+  
+  
+      <link rel="stylesheet" href="wp-content/plugins/db/Form/reg/css/style.css">
+
+  
+</head>
+
+<body class="form_dental">
+  <body>
+<form class="form_dental">
+  <input type="hidden" name="action" value="form_dental">
+  <input checked="" id="signin" name="action" type="radio" value="signin">
+  <label for="signin">Sign in</label>
+  <input id="signup" name="action" type="radio" value="signup">
+  <label for="signup">Sign up</label>
+  <input id="reset" name="action" type="radio" value="reset">
+  <label for="reset">Reset</label>
+  <div id="wrapper">
+    <div id="arrow"></div>
+    <input id="email"  name="login" placeholder="Login" type="text" value="<?= $_REQUEST['login'] ?>">
+    <input id="pass" name="password" placeholder="Password" type="password">
+    <input id="repass" name="repass" placeholder="Repeat password" type="password">
+    <select name="user" value="<?= $_REQUEST['user'] ?>">
+      <option value = "company">Компания</option>
+      <option value = "worker">Сотрудник компании</option>
+    </select>
+  </div>
+  <button name="reg_dental_sub" type="submit">
+    <span>
+      Reset password
+      <br>
+      Sign in
+      <br>
+      Sign up
+    </span>
+  </button>
+</form>
+<div id="hint">Click on the tabs</div>
+
+<script type="text/javascript">
+    
+</script>
+
+</body>
+  
+  
+</body>
+</html>
