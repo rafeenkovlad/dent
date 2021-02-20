@@ -7,10 +7,15 @@ $baseDir = dirname($vendorDir);
 
 return array(
     'Test\\' => array($baseDir . '/'),
+    'Route\\rest\\' => array($baseDir . '/route'),
     'Outpost\\' => array($baseDir . '/'),
+    'Myprofile\\write\\' => array($baseDir . '/filter'),
     'Mihanentalpo\\FastFuzzySearch\\' => array($vendorDir . '/mihanentalpo/fast-fuzzy-search/src', $vendorDir . '/mihanentalpo/fast-fuzzy-search/src'),
     'ListCSV\\' => array($baseDir . '/csv'),
+    'Lcobucci\\JWT\\' => array($vendorDir . '/lcobucci/jwt/src', $vendorDir . '/lcobucci/jwt/src'),
     'FunctionCommand\\' => array($baseDir . '/'),
+    'Form\\regform\\' => array($baseDir . '/Form'),
+    'Filter\\login\\' => array($baseDir . '/filter'),
     'Dbdental\\worker\\' => array($baseDir . '/dbdental'),
     'Dbdental\\userinfo\\' => array($baseDir . '/dbdental'),
     'Dbdental\\reg\\' => array($baseDir . '/dbdental'),
@@ -19,5 +24,6 @@ return array(
     'Dbdental\\db\\' => array($baseDir . '/dbdental'),
     'Dbdental\\company\\' => array($baseDir . '/dbdental'),
     'Dbdental\\chat\\' => array($baseDir . '/dbdental'),
+    'Coderun\\ContentCabinet\\' => array($baseDir . '/route/key'),
     'Author\\rait\\' => array($baseDir . '/'),
 );

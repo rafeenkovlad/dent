@@ -11,21 +11,29 @@ class ComposerStaticInit0fc72c8767240f560261be6ff92fb5b7
         array (
             'Test\\' => 5,
         ),
+        'R' => 
+        array (
+            'Route\\rest\\' => 11,
+        ),
         'O' => 
         array (
             'Outpost\\' => 8,
         ),
         'M' => 
         array (
+            'Myprofile\\write\\' => 16,
             'Mihanentalpo\\FastFuzzySearch\\' => 29,
         ),
         'L' => 
         array (
             'ListCSV\\' => 8,
+            'Lcobucci\\JWT\\' => 13,
         ),
         'F' => 
         array (
             'FunctionCommand\\' => 16,
+            'Form\\regform\\' => 13,
+            'Filter\\login\\' => 13,
         ),
         'D' => 
         array (
@@ -38,6 +46,10 @@ class ComposerStaticInit0fc72c8767240f560261be6ff92fb5b7
             'Dbdental\\company\\' => 17,
             'Dbdental\\chat\\' => 14,
         ),
+        'C' => 
+        array (
+            'Coderun\\ContentCabinet\\' => 23,
+        ),
         'A' => 
         array (
             'Author\\rait\\' => 12,
@@ -49,9 +61,17 @@ class ComposerStaticInit0fc72c8767240f560261be6ff92fb5b7
         array (
             0 => __DIR__ . '/../..' . '/',
         ),
+        'Route\\rest\\' => 
+        array (
+            0 => __DIR__ . '/../..' . '/route',
+        ),
         'Outpost\\' => 
         array (
             0 => __DIR__ . '/../..' . '/',
+        ),
+        'Myprofile\\write\\' => 
+        array (
+            0 => __DIR__ . '/../..' . '/filter',
         ),
         'Mihanentalpo\\FastFuzzySearch\\' => 
         array (
@@ -62,9 +82,22 @@ class ComposerStaticInit0fc72c8767240f560261be6ff92fb5b7
         array (
             0 => __DIR__ . '/../..' . '/csv',
         ),
+        'Lcobucci\\JWT\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/lcobucci/jwt/src',
+            1 => __DIR__ . '/..' . '/lcobucci/jwt/src',
+        ),
         'FunctionCommand\\' => 
         array (
             0 => __DIR__ . '/../..' . '/',
+        ),
+        'Form\\regform\\' => 
+        array (
+            0 => __DIR__ . '/../..' . '/Form',
+        ),
+        'Filter\\login\\' => 
+        array (
+            0 => __DIR__ . '/../..' . '/filter',
         ),
         'Dbdental\\worker\\' => 
         array (
@@ -98,6 +131,10 @@ class ComposerStaticInit0fc72c8767240f560261be6ff92fb5b7
         array (
             0 => __DIR__ . '/../..' . '/dbdental',
         ),
+        'Coderun\\ContentCabinet\\' => 
+        array (
+            0 => __DIR__ . '/../..' . '/route/key',
+        ),
         'Author\\rait\\' => 
         array (
             0 => __DIR__ . '/../..' . '/',
@@ -106,6 +143,8 @@ class ComposerStaticInit0fc72c8767240f560261be6ff92fb5b7
 
     public static $classMap = array (
         'Author\\rait\\Authrait' => __DIR__ . '/../..' . '/Authrait.php',
+        'Coderun\\ContentCabinet\\AuthJwt' => __DIR__ . '/../..' . '/route/key/AuthJwt.php',
+        'Composer\\InstalledVersions' => __DIR__ . '/..' . '/composer/InstalledVersions.php',
         'Dbdental\\chat\\Chat' => __DIR__ . '/../..' . '/dbdental/Chat.php',
         'Dbdental\\company\\CompanyInfo' => __DIR__ . '/../..' . '/dbdental/CompanyInfo.php',
         'Dbdental\\db\\Connect' => __DIR__ . '/../..' . '/dbdental/Connect.php',
@@ -114,11 +153,47 @@ class ComposerStaticInit0fc72c8767240f560261be6ff92fb5b7
         'Dbdental\\reg\\Reg' => __DIR__ . '/../..' . '/dbdental/Reg.php',
         'Dbdental\\userinfo\\Userinfo' => __DIR__ . '/../..' . '/dbdental/Userinfo.php',
         'Dbdental\\worker\\WorkerInfo' => __DIR__ . '/../..' . '/dbdental/WorkerInfo.php',
+        'Filter\\login\\Login_create' => __DIR__ . '/../..' . '/filter/Login_create.php',
+        'Form\\regform\\Regform' => __DIR__ . '/../..' . '/Form/Regform.php',
         'FunctionCommand\\Functions' => __DIR__ . '/../..' . '/Functions.php',
+        'Lcobucci\\JWT\\Builder' => __DIR__ . '/..' . '/lcobucci/jwt/src/Builder.php',
+        'Lcobucci\\JWT\\Claim' => __DIR__ . '/..' . '/lcobucci/jwt/src/Claim.php',
+        'Lcobucci\\JWT\\Claim\\Basic' => __DIR__ . '/..' . '/lcobucci/jwt/src/Claim/Basic.php',
+        'Lcobucci\\JWT\\Claim\\EqualsTo' => __DIR__ . '/..' . '/lcobucci/jwt/src/Claim/EqualsTo.php',
+        'Lcobucci\\JWT\\Claim\\Factory' => __DIR__ . '/..' . '/lcobucci/jwt/src/Claim/Factory.php',
+        'Lcobucci\\JWT\\Claim\\GreaterOrEqualsTo' => __DIR__ . '/..' . '/lcobucci/jwt/src/Claim/GreaterOrEqualsTo.php',
+        'Lcobucci\\JWT\\Claim\\LesserOrEqualsTo' => __DIR__ . '/..' . '/lcobucci/jwt/src/Claim/LesserOrEqualsTo.php',
+        'Lcobucci\\JWT\\Claim\\Validatable' => __DIR__ . '/..' . '/lcobucci/jwt/src/Claim/Validatable.php',
+        'Lcobucci\\JWT\\Parser' => __DIR__ . '/..' . '/lcobucci/jwt/src/Parser.php',
+        'Lcobucci\\JWT\\Parsing\\Decoder' => __DIR__ . '/..' . '/lcobucci/jwt/src/Parsing/Decoder.php',
+        'Lcobucci\\JWT\\Parsing\\Encoder' => __DIR__ . '/..' . '/lcobucci/jwt/src/Parsing/Encoder.php',
+        'Lcobucci\\JWT\\Signature' => __DIR__ . '/..' . '/lcobucci/jwt/src/Signature.php',
+        'Lcobucci\\JWT\\Signer' => __DIR__ . '/..' . '/lcobucci/jwt/src/Signer.php',
+        'Lcobucci\\JWT\\Signer\\BaseSigner' => __DIR__ . '/..' . '/lcobucci/jwt/src/Signer/BaseSigner.php',
+        'Lcobucci\\JWT\\Signer\\Ecdsa' => __DIR__ . '/..' . '/lcobucci/jwt/src/Signer/Ecdsa.php',
+        'Lcobucci\\JWT\\Signer\\Ecdsa\\MultibyteStringConverter' => __DIR__ . '/..' . '/lcobucci/jwt/src/Signer/Ecdsa/MultibyteStringConverter.php',
+        'Lcobucci\\JWT\\Signer\\Ecdsa\\Sha256' => __DIR__ . '/..' . '/lcobucci/jwt/src/Signer/Ecdsa/Sha256.php',
+        'Lcobucci\\JWT\\Signer\\Ecdsa\\Sha384' => __DIR__ . '/..' . '/lcobucci/jwt/src/Signer/Ecdsa/Sha384.php',
+        'Lcobucci\\JWT\\Signer\\Ecdsa\\Sha512' => __DIR__ . '/..' . '/lcobucci/jwt/src/Signer/Ecdsa/Sha512.php',
+        'Lcobucci\\JWT\\Signer\\Ecdsa\\SignatureConverter' => __DIR__ . '/..' . '/lcobucci/jwt/src/Signer/Ecdsa/SignatureConverter.php',
+        'Lcobucci\\JWT\\Signer\\Hmac' => __DIR__ . '/..' . '/lcobucci/jwt/src/Signer/Hmac.php',
+        'Lcobucci\\JWT\\Signer\\Hmac\\Sha256' => __DIR__ . '/..' . '/lcobucci/jwt/src/Signer/Hmac/Sha256.php',
+        'Lcobucci\\JWT\\Signer\\Hmac\\Sha384' => __DIR__ . '/..' . '/lcobucci/jwt/src/Signer/Hmac/Sha384.php',
+        'Lcobucci\\JWT\\Signer\\Hmac\\Sha512' => __DIR__ . '/..' . '/lcobucci/jwt/src/Signer/Hmac/Sha512.php',
+        'Lcobucci\\JWT\\Signer\\Key' => __DIR__ . '/..' . '/lcobucci/jwt/src/Signer/Key.php',
+        'Lcobucci\\JWT\\Signer\\Keychain' => __DIR__ . '/..' . '/lcobucci/jwt/src/Signer/Keychain.php',
+        'Lcobucci\\JWT\\Signer\\OpenSSL' => __DIR__ . '/..' . '/lcobucci/jwt/src/Signer/OpenSSL.php',
+        'Lcobucci\\JWT\\Signer\\Rsa' => __DIR__ . '/..' . '/lcobucci/jwt/src/Signer/Rsa.php',
+        'Lcobucci\\JWT\\Signer\\Rsa\\Sha256' => __DIR__ . '/..' . '/lcobucci/jwt/src/Signer/Rsa/Sha256.php',
+        'Lcobucci\\JWT\\Signer\\Rsa\\Sha384' => __DIR__ . '/..' . '/lcobucci/jwt/src/Signer/Rsa/Sha384.php',
+        'Lcobucci\\JWT\\Signer\\Rsa\\Sha512' => __DIR__ . '/..' . '/lcobucci/jwt/src/Signer/Rsa/Sha512.php',
+        'Lcobucci\\JWT\\Token' => __DIR__ . '/..' . '/lcobucci/jwt/src/Token.php',
+        'Lcobucci\\JWT\\ValidationData' => __DIR__ . '/..' . '/lcobucci/jwt/src/ValidationData.php',
         'ListCSV\\GodsList' => __DIR__ . '/../..' . '/csv/GodsList.php',
         'Mihanentalpo\\FastFuzzySearch\\FastFuzzySearch' => __DIR__ . '/..' . '/mihanentalpo/fast-fuzzy-search/src/FastFuzzySearch.php',
+        'Myprofile\\write\\Write_profile' => __DIR__ . '/../..' . '/filter/Write_profile.php',
         'Outpost\\HelpPost' => __DIR__ . '/../..' . '/HelpPost.php',
-        'Test\\Testt' => __DIR__ . '/../..' . '/Testt.php',
+        'Route\\rest\\Login' => __DIR__ . '/../..' . '/route/Login.php',
     );
 
     public static function getInitializer(ClassLoader $loader)

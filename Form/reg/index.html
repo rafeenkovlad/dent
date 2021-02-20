@@ -11,7 +11,7 @@
   
 </head>
 
-<body class="form_dental">
+<body>
   <body>
 <form class="form_dental">
   <input type="hidden" name="action" value="form_dental">
@@ -26,10 +26,6 @@
     <input id="email"  name="login" placeholder="Login" type="text" value="<?= $_REQUEST['login'] ?>">
     <input id="pass" name="password" placeholder="Password" type="password">
     <input id="repass" name="repass" placeholder="Repeat password" type="password">
-    <select name="user" value="<?= $_REQUEST['user'] ?>">
-      <option value = "company">Компания</option>
-      <option value = "worker">Сотрудник компании</option>
-    </select>
   </div>
   <button name="reg_dental_sub" type="submit">
     <span>

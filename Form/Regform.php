@@ -10,7 +10,7 @@ class Regform
 
     public function reg_form($atts, $content=null)
     {
-        $content = require('reg/index.html');
+        $content = require_once('reg/index.html');
         return $content[0];
     }
 }

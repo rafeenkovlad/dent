@@ -30,7 +30,9 @@
             "Form\\regform\\": "Form",
             "Route\\rest\\": "route",
             "Coderun\\ContentCabinet\\": "route/key",
-            "Lcobucci\\JWT\\": "vendor/lcobucci/jwt/src/"
+            "Lcobucci\\JWT\\": "vendor/lcobucci/jwt/src/",
+            "Myprofile\\write\\": "filter",
+            "Filter\\login\\": "filter"
 
         }
     }

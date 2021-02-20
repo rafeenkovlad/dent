@@ -15,7 +15,7 @@ class CompanyInfo
             $this->arrayCompany[$this->arrayKey[$i]] = $this->array[$i];
         }
         var_dump($this->arrayCompany);
-        return $this->query = "UPDATE company SET name_company = :nameCompany, group_gods = :gods, contact = :contact, info = :info WHERE wp_users_id = :id";
+        return $this->query = "UPDATE company SET name_company = :nameCompany, group_gods = :gods, contact = :contact, info = :info WHERE id = :id";
     }
 
     //запись почты в главную таблицу вп_юсерс

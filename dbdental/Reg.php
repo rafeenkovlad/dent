@@ -41,17 +41,16 @@ class Reg{
             exit('Пользователь уже существует.');
         }
 
+        if(strlen($this->password)<6){
+            exit('Короткий пароль, может послужить взлому вашего аккаунта. Придумайте новый пароль.');
+        }
+
         if($this->password === $this->retrypass){
             return $this->query = "INSERT INTO wp_users (user_login, user_pass, user_nicename) VALUES (:company, :pass, :name)";
         }else{
             exit('Набранные пароли не совпадаюyт.');
         }
 
-        if(strlen($this->password)<6){
-            exit('Короткий пароль, может послужить взлому вашего аккаунта. Придумайте новый пароль.');
-        }
-        
-        
     }
 
     //запись ИД компании в интерфейс лк компании

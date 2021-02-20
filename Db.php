@@ -11,6 +11,7 @@ use Dbdental\db\Connect;
 use FunctionCommand\Functions;
 use Form\regform\Regform;
 use Route\rest\Login;
+use Myprofile\write\Write_profile;
 
 
 class Db extends WP_REST_Controller {
@@ -55,8 +56,9 @@ class Db extends WP_REST_Controller {
     }
     public function getRegForm()
     {
-        $this->getreg()->get_reg_form();
-
+        if(!$_COOKIE['auth']['token']){
+            $this->getreg()->get_reg_form();
+        }
     }
 
     public function action_reg()
@@ -75,20 +77,36 @@ class Db extends WP_REST_Controller {
     //  отправляем данные о регистрации
     public function setReg(array $request)
     {
+
         if(!empty($request['repass']) && isset($request['sub'])) {
+            Write_profile::set_profile_reg();
+            if(isset($_POST['set_save_info'])):
+
+                var_dump($request);
             if ($request['user'] == 'company') {
                 $this->func()->dataReg($request['login'], $request['password'], $request['repass']);
-                $this->func()->regCompany($this->db());
+                $id_wp_user = $this->func()->regCompany($this->db());
+                $this->func()->dataCompany([$_POST['name'], 'test', $_POST['contact'], $_POST['message'], $this->db()->lastInsertId()]);
+                $this->func()->companySet($this->db());
+                $this->func()->dataEmail($_POST['email']);
+                $this->func()->companyEmail($this->db(), $id_wp_user);
             }
             if ($_REQUEST['user'] == 'worker') {
                 $this->func()->dataReg($request['login'], $request['password'], $request['repass']);
-                $this->func()->regWorker($this->db());
+                $id_wp_user = $this->func()->regWorker($this->db());
+                $this->func()->dataWorker([$_POST['name'], 'test', $_POST['contact'], $_POST['message'], $this->db()->lastInsertId()]);
+                $this->func()->workerSet($this->db());
+                $this->func()->dataEmail($_POST['email']);
+                $this->func()->companyEmail($this->db(), $id_wp_user);
             }
 
-            var_dump($this->db()->lastInsertId());
-        }else{
+            endif;
+
+        }
+
+        //Авторизация пользователя
+        if(!empty($request['password']) && empty($request['repass']) && isset($request['sub'])){
             $this->login()->login_dent();
-            $this->login()->token_actual();
 
             $login = new WP_REST_Request('POST', '/dental/v1/login');
             $login->set_query_params([
@@ -96,40 +114,48 @@ class Db extends WP_REST_Controller {
                 'password' => $request['password']
             ]);
             $response = rest_do_request($login);
+
             if(isset($response->data['response'])){
                 setcookie('auth[token]', json_encode($response, true), time() + 60);
             }
+        }
+
+        if($_COOKIE['auth']['token']){
+            $this->login()->token_actual();
             $this->token_proov();
+        }
+
+        if(!isset($_COOKIE['auth']['token']) && !empty($request['login']) && isset($request['sub'])){
+            var_dump('Здесь будет сброс пароля');
         }
     }
 
     public function token_proov()
     {
         $cookie = json_decode($_COOKIE['auth']['token'], true);
+
         if($cookie):
 
         $login = new WP_REST_Request('POST', '/token/v1/activ');
         $login->set_query_params([
             'token' => $cookie['data']['params']['token'],
-            'token_refresh' => $cookie['data']['params']['token_refresh']
+            'token_refresh' => $cookie['data']['params']['token_refresh'],
+            'user_id' => $cookie['data']['params']['user_id']
         ]);
         $response = rest_do_request($login);
+        $this->login()->set_time_cookie_wp($response->data['params'][0]['user_id']); //изменяем время жизни куки токена, заданного вордпресс
+        wp_set_auth_cookie($response->data['params'][0]['user_id']); //авторизуем пользователя
 
-       print_r($response->data['params'][0]);
-       print_r($cookie['data']['params']);
+
+            var_dump($_COOKIE);
         endif;
     }
-
 
 }
 
 $db = new Db();
 $db->getRegForm();
 $db->action_reg();
-
-
-
-
 
 ?>
 

@@ -125,7 +125,7 @@ class Login
     Суть метода проверки в WordPress, в том что бы он вернул булево
     значение – этакий ключ к разрашению дальнейшего выполнения колбэка этого роута.*/
     public function checkAuth(\WP_REST_Request $request) {
-        var_dump($request->get_params());
+
         $token=$request->get_params($this->header_token_key)['token'];//токен из заголовка
         $token_refresh=$request->get_params($this->header_token_refresh_key)['token_refresh'];//рефреш-токен из заголовка
 
@@ -217,7 +217,6 @@ class Login
     //Метод класса (обратите внимание!)
     public function adminTest(\WP_REST_Request $request): object
     {
-
         $response = rest_ensure_response(['success' => true, 'response' => 'ok', 'params' => [$request->get_params($this->header_token_key)]]);
         if ($this->is_refresh) {// пересоздание токена - если истёк и есть валидный рефреш
             $this->responseRefreshToken($request, $response);
@@ -226,6 +225,23 @@ class Login
         $response->set_status(200);
 
         return $response;
+    }
+
+    public function set_time_cookie_wp($user_id)
+    {
+        apply_filters('auth_cookie_expiration', $user_id, false );
+        add_filter( 'auth_cookie_expiration',  [&$this,'cookie_expiration_new'], 20, 3 );
+
+    }
+    public function cookie_expiration_new ($expiration, $user_id, $remember ) {
+        // Время жизни cookies для администратора
+        $expiration =  60; //* DAY_IN_SECONDS;
+        if (user_can( $user_id, 'manage_options' ) ) {
+            return $expiration; //- 84500;
+        }
+        // Для всех остальных пользователей
+
+        return $expiration;
     }
 }
 

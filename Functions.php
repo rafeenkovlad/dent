@@ -38,8 +38,10 @@ class Functions
         if($arr[0] == 1 && $arr[1] == 1) {
             $ver = $db->prepare($reg->setRegCompany());
             $ver->execute(['company' => $reg->company, 'pass' => md5($reg->password), 'name' => $reg->company]);  //вставка регистрационных данных компании в бд
+            $wp_user_id =$db->lastInsertId();
             var_dump($insertId = $db->prepare($reg->setIdCompany()));
             var_dump($insertId->execute(['id' => $db->lastInsertId()]));
+            return  $wp_user_id;
         }
     }
 
@@ -141,8 +143,10 @@ class Functions
         {
             $ver = $db->prepare($reg->setRegWorker());
             $ver->execute(['worker' => $reg->company, 'pass' => md5($reg->password), 'name' => $reg->company]); //вставка регистрационных данных компании в бд
+            $wp_user_id =$db->lastInsertId();
             $insertId = $db->prepare($reg->setIdWorker());
             $insertId->execute(['id' => $db->lastInsertId()]);
+            return $wp_user_id;
         }
     }
 
