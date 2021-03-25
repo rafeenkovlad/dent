@@ -21,7 +21,7 @@ class Login_create extends \Db{
     {
 
         if(!empty($request['repass']) && isset($request['sub'])) {
-            Write_profile::set_profile_reg();
+            parent::myprofileWrite();
             if(isset($_POST['set_save_info'])):
 
                 var_dump($request);
@@ -50,7 +50,7 @@ class Login_create extends \Db{
         if(!empty($request['password']) && empty($request['repass']) && isset($request['sub'])){
             $this->login()->login_dent();
 
-            $login = new WP_REST_Request('POST', '/dental/v1/login');
+            $login = new \WP_REST_Request('POST', '/dental/v1/login');
             $login->set_query_params([
                 'login' => $request['login'],
                 'password' => $request['password']
@@ -78,7 +78,7 @@ class Login_create extends \Db{
 
         if($cookie):
 
-            $login = new WP_REST_Request('POST', '/token/v1/activ');
+            $login = new \WP_REST_Request('POST', '/token/v1/activ');
             $login->set_query_params([
                 'token' => $cookie['data']['params']['token'],
                 'token_refresh' => $cookie['data']['params']['token_refresh'],
@@ -93,4 +93,3 @@ class Login_create extends \Db{
         endif;
     }
 }
-
