@@ -10,9 +10,11 @@ require_once 'vendor/autoload.php';
 use Dbdental\db\Connect;
 use FunctionCommand\Functions;
 use Form\regform\Regform;
-use Route\rest\Login;
 use Myprofile\write\Write_profile;
 use Filter\login\Login_create;
+use App\Models\Wp_user;
+use function App\config\loaders\bootstrap;
+
 
 
 class Db extends WP_REST_Controller {
@@ -20,13 +22,25 @@ class Db extends WP_REST_Controller {
     private $db;
     public $func;
     public $getreg;
-    private $controller;
     public $token, $token_refresh, $login;
+    protected $ORM;
 
+    //Eloquent connect dental DB
+    public function __construct(){
+        if(empty($this->ORM))
+        {
+            $this->ORM = bootstrap();
+        }
+        return $this->ORM;
+    }
 
-    public function db()
+    protected function db()
     {
-        return $this->db = Connect::getConnect();
+        if(empty($db))
+        {
+            $this->db = Connect::getConnect();
+        }
+        return $this->db;
     }
 
     public function func()
@@ -38,50 +52,34 @@ class Db extends WP_REST_Controller {
         return $this->func;
     }
 
-    public function login()
+    protected static function getreg()
     {
-        if (empty($this->controller))
-        {
-            $this->controller = new Login();
-        }
-        return $this->controller;
+       return Regform::get_reg_form();
     }
 
-    public function getreg()
+    protected static function myprofileWrite() // login_create.php
     {
-        if (empty ($this->getreg))
-        {
-            return $this->getreg = new Regform();
-        }
-        return $this->getreg;
-    }
-    public function getRegForm()
-    {
-        if(!$_COOKIE['auth']['token']){
-            $this->getreg()->get_reg_form();
-        }
-    }
-
-    protected static function myprofileWrite()
-    {
-        Write_profile::set_profile_reg();
+        var_dump(Write_profile::set_profile_reg());
     }
 
     public function login_dentaline()
     {
         $this->login = new Login_create();
         $this->login->action_reg();
+        (!is_user_logged_in())? self::getreg(): 'Личный кабинет';
     }
 
-    private function resetUserPass()
+    protected static function resetUserPassGet($login, $user = Wp_user::class)
     {
-
+        return $user::where('user_login', $login)
+            ->take(1)
+            ->get(['ID', 'user_email']);
     }
+
 
 }
 
 $db = new Db();
-$db->getRegForm();
 $db->login_dentaline();//авторизация, регистрация, хранение кук, сохранение данных о новыъ зарегестрированных пользователях
 
 

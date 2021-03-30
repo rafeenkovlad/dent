@@ -5,9 +5,10 @@ use Coderun\ContentCabinet\AuthJwt;
 
 class Login
 {
+    private $header_token_key = 'token', $header_token_refresh_key= 'token_refresh';
     public function __construct()
     {
-        echo getcwd();
+        //echo getcwd();
         if(preg_match('/wp-admin/i', getcwd()))
         {
             require_once('../wp-includes/pluggable.php');
@@ -85,28 +86,11 @@ class Login
             $response->set_status( 401 );
             return $response;
         }
-        //Класс-обёртка над библиотекой jwt
-        $jwt=new AuthJwt();
 
         $return_params['user_id'] = $user->data->ID;
 
-        $return_params['token']=$jwt->create($user->data->ID);//Создание токена и в качестве полезной нагрузке - ИД пользователя
+        $return_params['redirect']=getcwd();//на будущее
 
-        $return_params['token_refresh']=$jwt->createRefresh($user->data->ID);//За одно создадим рефреш-токен
-
-        $return_params['redirect']='/admin';//на будущее
-
-        //Сохраним в заранее подготовленную таблицу MySQL наши данные
-        $jwt->addTable([
-                'user_id'=>intval($user->data->ID),
-                'auth_token'=>$return_params['token'],
-                'refresh_token'=> $return_params['token_refresh'],
-            ]
-        );
-
-        if($this->debug) {//Расширенный вывод информации
-            $return_params=array_merge($return_params,$request_param,[$user]);
-        }
         //Подготовка объекта response WordPress
         $response = rest_ensure_response( ['success' => true, 'response' => $response, 'params' => $return_params] );
 
@@ -120,112 +104,12 @@ class Login
 
         return $response;
     }
-    /*--------------------------------------------------
-    Для аутентификации пользователя на стороне WordPress используем специальный метод (он же используется в роутах).
-    Суть метода проверки в WordPress, в том что бы он вернул булево
-    значение – этакий ключ к разрашению дальнейшего выполнения колбэка этого роута.*/
-    public function checkAuth(\WP_REST_Request $request) {
-
-        $token=$request->get_params($this->header_token_key)['token'];//токен из заголовка
-        $token_refresh=$request->get_params($this->header_token_refresh_key)['token_refresh'];//рефреш-токен из заголовка
-
-        $jwt=new AuthJwt();//Наша обёртка
-
-        $is_valid_token=$jwt->validate($token);//Проверка валидности токена
-
-        if($is_valid_token['isValid']??false) {
-            return true;
-        }
-
-        if(empty($token_refresh)) {
-            return false;
-        }
-
-        $jwt=new AuthJwt();
-
-        if($jwt->getUserIdToRefreshToken($token_refresh)===0) {
-            return false;
-        }
-
-        $this->is_refresh=true;//флаг что унжно делать обновление токена
-
-        return true;
-
-    }
-
-    /**
-     * Обновляет токен
-     * Заполняет заголовки для клиента
-     * @param \WP_REST_Request $request
-     * @param \WP_REST_Response $response
-     */
-    protected function responseRefreshToken(\WP_REST_Request $request,\WP_REST_Response &$response):void {
-        var_dump($request);
-        $token_refresh=$request->get_header($this->header_token_refresh_key);
-
-        if(empty($token_refresh)) {
-            return;
-        }
-
-        $jwt=new AuthJwt();
-
-        $user_id=$jwt->getUserIdToRefreshToken($token_refresh);//ИД пользователя по токена-рефреша
-
-        if(empty($user_id)) {
-            return;
-        }
-
-        $user=new \WP_User($user_id);
-
-        if(empty($user)) {
-            return;
-        }
-
-        $return_params['token']=$jwt->create($user->ID);
-
-        $return_params['token_refresh']=$jwt->createRefresh($user->ID);
-
-        $jwt->addTable([
-                'user_id'=>intval($user->ID),
-                'auth_token'=>$return_params['token'],
-                'refresh_token'=> $return_params['token_refresh'],
-            ]
-        );
-
-        $response->set_headers( [
-                $this->header_token_key      => $this->token['token'],
-                $this->header_token_refresh_key      => $this->token['token_refresh'],
-            ]
-        );
-
-    }
 
     public function token_actual()
     {
-        add_action('rest_api_init', [&$this, 'route_token_available']);
-    }
-    public function route_token_available()
-    {
-        register_rest_route('token/v1', '/activ', [
-            'methods' => 'POST',
-            'callback' => [&$this, 'adminTest'],
-            'permission_callback' => [&$this, 'checkAuth']//проверка токенов
-        ]);
-
 
     }
-    //Метод класса (обратите внимание!)
-    public function adminTest(\WP_REST_Request $request): object
-    {
-        $response = rest_ensure_response(['success' => true, 'response' => 'ok', 'params' => [$request->get_params($this->header_token_key)]]);
-        if ($this->is_refresh) {// пересоздание токена - если истёк и есть валидный рефреш
-            $this->responseRefreshToken($request, $response);
-        }
 
-        $response->set_status(200);
-
-        return $response;
-    }
 
     public function set_time_cookie_wp($user_id)
     {
@@ -235,14 +119,15 @@ class Login
     }
     public function cookie_expiration_new ($expiration, $user_id, $remember ) {
         // Время жизни cookies для администратора
-        $expiration =  60; //* DAY_IN_SECONDS;
+        $expiration =  86400; //* DAY_IN_SECONDS;
         if (user_can( $user_id, 'manage_options' ) ) {
             return $expiration; //- 84500;
         }
         // Для всех остальных пользователей
-
         return $expiration;
     }
+
+
 }
 
 

@@ -1,0 +1,49 @@
+@import url('//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css');
+
+/* POP UP WINDOW */
+
+/* VERTICAL ALIGN */
+.vertical-alignment-helper {
+    display:table;
+    height: 100%;
+    width: 100%;
+    pointer-events:none;
+}
+.vertical-align-center {
+    /* To center vertically */
+    display: table-cell;
+    vertical-align: middle;
+    pointer-events:none;
+}
+.modal-content {
+    /* Bootstrap sets the size of the modal in the modal-dialog class, we need to inherit it */
+    width:inherit;
+    height:inherit;
+    /* To center horizontally */
+    margin: 0 auto;
+    pointer-events:all;
+}
+/*****/
+.modalbtn{
+ display:none; 
+}
+
+.modal-header,.modal-footer{
+  border:none!important;
+}
+
+.modal-content{
+  width:320px;
+  height:200px;
+  margin: 0 auto;
+}
+
+.modal-content h3{
+  font-size:16px;
+  text-align:center;
+  margin-bottom:20px;
+}
+
+.modal-body p{
+  text-align:center;
+}

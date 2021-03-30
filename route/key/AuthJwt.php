@@ -29,8 +29,8 @@ class AuthJwt{
             ->permittedFor('/')
             ->identifiedBy(md5("user_id_{$id}"), true)
             ->issuedAt($time)
-            ->canOnlyBeUsedAfter($time + 60)
-            ->expiresAt($time + 129600)
+            ->canOnlyBeUsedAfter($time + 50)
+            ->expiresAt($time + 60)
             ->withClaim('userId', $id)
             ->getToken($signer, new Key($this->secret_key));
 
@@ -52,7 +52,7 @@ class AuthJwt{
             ->identifiedBy(md5("user_id_{$id}"), true)
             ->issuedAt($time)
             ->canOnlyBeUsedAfter($time + 60)
-            ->expiresAt($time + 120)
+            ->expiresAt($time + 3600)
             ->withClaim('userId', $id)
             ->getToken($signer, new Key($this->secret_key));
 

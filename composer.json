@@ -7,9 +7,19 @@
             "email": "rafeenkovlad@gmail.com"
         }
     ],
+     "scripts": {
+        "psysh": "psysh",
+        "phpcs": "phpcs"
+    },
     "require": {
         "mihanentalpo/fast-fuzzy-search": "*",
-        "lcobucci/jwt": "3.3.3"
+        "lcobucci/jwt": "3.3.3",
+	 "illuminate/database": "^8",
+        "symfony/finder": "^5.0",
+        "fakerphp/faker": "^1.13",
+        "illuminate/events": "^8.34",
+        "psy/psysh": "^0.10.2",
+        "swiftmailer/swiftmailer": "^6.0"
     },
     "autoload": {
         "psr-4":{
@@ -32,8 +42,16 @@
             "Coderun\\ContentCabinet\\": "route/key",
             "Lcobucci\\JWT\\": "vendor/lcobucci/jwt/src/",
             "Myprofile\\write\\": "filter",
-            "Filter\\login\\": "filter"
+            "Filter\\login\\": "filter",
+	    "App\\": "app",
+	    "Database\\Factories\\": "factories",
+	    "Form\\alert\\": "Form"		
 
-        }
+        },
+	"files": [
+          "app/config/loaders.php",
+          "app/config/schema.php",
+	  "passGen.php"
+        ]
     }
 }

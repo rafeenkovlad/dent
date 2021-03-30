@@ -1,0 +1,135 @@
+body {
+  font-family: 'Ubuntu condensed';
+}
+
+.vh-1 {
+  height: 100vh;
+}
+
+.padding-1 {
+  padding: 2em;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+.flex-center-children {
+  display: -webkit-box;
+  display: -moz-box;
+  display: box;
+  display: -moz-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  box-orient: vertical;
+  -webkit-box-direction: normal;
+  box-direction: normal;
+  -moz-flex-direction: column;
+  flex-direction: column;
+  -ms-flex-direction: column;
+  -webkit-box-align: center;
+  box-align: center;
+  -moz-align-items: center;
+  -ms-align-items: center;
+  -o-align-items: center;
+  align-items: center;
+  -ms-flex-align: center;
+  -webkit-box-pack: center;
+  box-pack: center;
+  -moz-justify-content: center;
+  -ms-justify-content: center;
+  -o-justify-content: center;
+  justify-content: center;
+  -ms-flex-pack: center;
+  -webkit-perspective: 1000px;
+  perspective: 1000px;
+}
+
+#sample-card {
+  -webkit-transform: translateZ(-800px) scale(0.7);
+  transform: translateZ(-800px) scale(0.7);
+}
+
+.card {
+  display: -webkit-box;
+  display: -moz-box;
+  display: box;
+  display: -moz-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  box-align: center;
+  -moz-align-items: center;
+  -ms-align-items: center;
+  -o-align-items: center;
+  align-items: center;
+  -ms-flex-align: center;
+  -webkit-perspective: 1000px;
+  perspective: 1000px;
+  position: relative;
+  -webkit-box-shadow: 0 0 8px 0 #444;
+          box-shadow: 0 0 8px 0 #444;
+  background-color: #36C;
+  color: white;
+  text-align: center;
+  width: 100%;
+  max-width: 350px;
+  padding: 2em 3em;
+  font-size: 1.2em;
+  cursor: pointer;
+}
+
+.muddle {
+  line-height: 10.4;
+}
+
+.muddle-word {
+  display: inline-block;
+  opacity: 0;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+}
+
+.button {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  display: -webkit-box;
+  display: -moz-box;
+  display: box;
+  display: -moz-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  box-align: center;
+  -moz-align-items: center;
+  -ms-align-items: center;
+  -o-align-items: center;
+  align-items: center;
+  -ms-flex-align: center;
+  -webkit-box-pack: center;
+  box-pack: center;
+  -moz-justify-content: center;
+  -ms-justify-content: center;
+  -o-justify-content: center;
+  justify-content: center;
+  -ms-flex-pack: center;
+  font-size: 2.5em;
+  z-index: 1;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+}
+
+.close-button {
+  position: absolute;
+  top: 0;
+  right: 0;
+  opacity: 0;
+  background-color: white;
+  border-radius: 50%;
+}
