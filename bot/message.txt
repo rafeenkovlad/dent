@@ -1,0 +1,17 @@
+123 совпадение: 100%
+<a href ='https://d993e4fea038.ngrok.io/dental2/wordpress/wp-json/dental/v1/get-telegram-url?id_user=1&sn=123'> sss </a> : 123
+<a href ='https://d993e4fea038.ngrok.io/dental2/wordpress/wp-json/dental/v1/get-telegram-url?id_user=0&sn=123'> sss </a> : 123
+<a href ='https://d993e4fea038.ngrok.io/dental2/wordpress/wp-json/dental/v1/get-telegram-url?id_user=0&sn=123'> sss </a> : 123
+<a href ='https://d993e4fea038.ngrok.io/dental2/wordpress/wp-json/dental/v1/get-telegram-url?id_user=0&sn=123'> 123 </a> : 123
+<a href ='https://d993e4fea038.ngrok.io/dental2/wordpress/wp-json/dental/v1/get-telegram-url?id_user=429&sn=123'> sss </a> : 123
+<a href ='https://d993e4fea038.ngrok.io/dental2/wordpress/wp-json/dental/v1/get-telegram-url?id_user=429&sn=123'> sss </a> : 123
+<a href ='https://d993e4fea038.ngrok.io/dental2/wordpress/wp-json/dental/v1/get-telegram-url?id_user=430&sn=123'> sss </a> : 123
+<a href ='https://d993e4fea038.ngrok.io/dental2/wordpress/wp-json/dental/v1/get-telegram-url?id_user=483&sn=123'> sss </a> : 123
+<a href ='https://d993e4fea038.ngrok.io/dental2/wordpress/wp-json/dental/v1/get-telegram-url?id_user=389&sn=123'> sss </a> : 123
+
+na123 совпадение: 33.333333333333%
+<a href ='https://d993e4fea038.ngrok.io/dental2/wordpress/wp-json/dental/v1/get-telegram-url?id_user=0&sn=na123'> durr </a> : na123
+
+12 совпадение: 33.333333333333%
+<a href ='https://d993e4fea038.ngrok.io/dental2/wordpress/wp-json/dental/v1/get-telegram-url?id_user=0&sn=12'> ww </a> : 12
+<a href ='https://d993e4fea038.ngrok.io/dental2/wordpress/wp-json/dental/v1/get-telegram-url?id_user=429&sn=12'> ww </a> : 12

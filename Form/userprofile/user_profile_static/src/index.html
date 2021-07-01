@@ -1,0 +1,12 @@
+<!-- jquery.min.js and script.js уже подключены в футере. style.css подключен.-->
+<?= self::$profile ?> <!-- Значения профиля доступны как  self::$profile->id  -->
+<br>
+рейтинг публикаций: <?= self::$like_sum ?>
+<br>
+<?php foreach (self::$list as $object): ?>
+
+ <?= $object->id ?> | <?= $object->name ?> | <?= $object->sirial_number ?> | <?= $object->made_in_company ?> | <?= $object->price ?> | <?= self::imgUrl($object->img_url,$object->id) ?> | <?= $object->company_id ?></br>
+
+<?php endforeach; ?>
+
+

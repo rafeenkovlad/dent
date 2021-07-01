@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=Auto Clicker by MurGee.com
+Exec=env WINEPREFIX="/home/ghost1/.wine" wine C:\\\\windows\\\\command\\\\start.exe /Unix /home/ghost1/.wine/dosdevices/c:/users/Public/Рабочий\\ стол/Auto\\ Clicker\\ by\\ MurGee.com.lnk
+Type=Application
+StartupNotify=true
+Path=/home/ghost1/.wine/dosdevices/c:/Program Files (x86)/Auto Clicker by MurGee.com
+Icon=4696_AutoClicker.0
+StartupWMClass=autoclicker.exe

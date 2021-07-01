@@ -1,0 +1,23 @@
+{
+    "name": "mihanentalpo/fast-fuzzy-search",
+    "type": "library",
+    "description": "Fast fuzzy search in an array of strings for the most similiar ones",
+    "keywords": ["search", "compare", "fuzzy"],
+    "authors": [
+        {
+            "name": "Mikhail Rubin",
+            "email": "mihanentalpo@yandex.ru",
+            "homepage": "https://mihanentalpo.me",
+            "role": "Developer"
+        }
+    ],
+    "license": "MIT",
+    "require": {
+        "php": "^5.3.5 || ^7.0"
+    },
+    "autoload": {
+        "psr-4":{
+            "Mihanentalpo\\FastFuzzySearch\\": "src/"
+        }
+    }
+}

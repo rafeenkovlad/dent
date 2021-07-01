@@ -1,0 +1,22 @@
+<form name="new_post" method="POST" action="">
+<div>
+    <input type="input" class="form__field" placeholder="Тема поста" name="title_new_post" id='title_new_post' required />
+</div>
+<div>
+    <select name="rubrica">
+        <option>Выберите рубрику</option>
+        <option value="study_or_works">Учеба/работа</option>
+        <option value="news">Новости</option>
+        <option value="useful">Полезное</option>
+        <option value="buy_or_sell">Куплю/продам</option>
+        <option value="services">Сервис</option>
+    </select>
+</div>
+<div>
+<?= self::editor() ?>
+</div>
+<button type="submit" id="new_post_sub" name="submit_post">Сохранить</button>
+</form>
+
+
+

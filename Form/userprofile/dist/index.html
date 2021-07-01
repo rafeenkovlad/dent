@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="ru" >
+
+    <p class="info"><?= self::$profile ?>
+      <?= self::$profile->id ?>
+      <?= self::$profile->name_company ?>
+      <?= self::$profile->contact ?>
+      <?= self::$profile->info ?>
+      <?= self::$profile->workers ?>
+      <?= self::$profile->excel_list ?>
+      <?= self::$profile->company_logo	?>
+      <?= self::$profile->like_sum	?></p>
+
+<form id="save_settings" name="save_settings" enctype = "multipart/form-data">
+  <input type="file" id="img_profile" name="img" accept="image/jpeg,image/png,image/gif">
+  <input type="text" id="name_profile" name="name_profile" value="<?= self::$profile->name_company??self::$profile->full_name ?>">
+  <input type="text" id="contact_profile"  name="contact_profile" value="<?= self::$profile->contact ?>">
+  <input type="text" id="info_profile" name="info_profile" value="<?= self::$profile->info??self::$profile->about_your ?>">
+  <input type="hidden" id="wp_user_id" name="wp_user_id" value="<?= self::$profile->wp_users_id ?>">
+  <input type="button" id="update_profile" value="Обновить">
+</form>
+    <form method = "POST" action = "" enctype = "multipart/form-data">
+      <input type = "file" name="csv"/>
+      <input type = "submit" name = "sub" value = "сформировать"/>
+    </form>
+
+<div id="data_response"></div>
+
+
+</html>
