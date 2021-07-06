@@ -22,7 +22,7 @@ html{font-family:sans-serif;-webkit-text-size-adjust:100%;-ms-text-size-adjust:1
 }
 /*****/
 .modalbtn{
- display:none; 
+ display:none;
 }
 
 .modal-header,.modal-footer{
@@ -31,7 +31,7 @@ html{font-family:sans-serif;-webkit-text-size-adjust:100%;-ms-text-size-adjust:1
 
 .modal-content{
   width:320px;
-  height:200px;
+  height:0 auto;
   margin: 0 auto;
 }
 

@@ -41,11 +41,17 @@
             "Route\\rest\\": "route",
             "Coderun\\ContentCabinet\\": "route/key",
             "Lcobucci\\JWT\\": "vendor/lcobucci/jwt/src/",
-            "Myprofile\\write\\": "filter",
+            "Myprofile\\write\\": "Form",
             "Filter\\login\\": "filter",
 	    "App\\": "app",
 	    "Database\\Factories\\": "factories",
-	    "Form\\alert\\": "Form"		
+	    "Form\\alert\\": "Form",
+	    "Filter\\profile\\": "filter",
+	    "Form\\profile\\": "Form",
+	    "Filter\\newpost\\": "filter",
+	    "Form\\rait\\": "Form",
+	    "Route\\Wp\\": "route",
+	    "Form\\chat\\": "Form"	
 
         },
 	"files": [

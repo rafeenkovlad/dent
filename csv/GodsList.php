@@ -15,8 +15,8 @@ class GodsList
 
         for($i = 0; $data = fgetcsv($this->dataList, 4000, ','); $i++)
         {
-            [$name, $sirial_numb, $madeIn, $litleInfo, $cost] = $data;
-            $this->dataArr[] = ['name' => $name, 'sirial_numb' => $sirial_numb, 'made_in_company' => $madeIn, 'litle_info' => $litleInfo, 'price' => $cost];
+            [$name, $sirial_numb, $madeIn, $cost, $litleInfo] = $data;
+            $this->dataArr[] = ['name' => $name, 'sirial_numb' => $sirial_numb, 'made_in_company' => $madeIn, 'price' => $cost, 'litle_info' => $litleInfo];
 
         }
         return $this->dataArr;
@@ -45,6 +45,11 @@ class GodsList
     public static function deleteCSV()
     {
         return self::$delete = "DELETE FROM excel_list WHERE company_id = :company_id";
+    }
+
+    public function succesCsvResponse($n_strok)
+    {
+        echo "<script type='text/javascript'> alert('было успешно сохранено {$n_strok} строк(и).'); </script>";
     }
 }
 
