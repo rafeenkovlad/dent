@@ -1,13 +1,11 @@
 <?php
 namespace Route\rest;
-use Coderun\ContentCabinet\AuthJwt;
-
 
 class Login
 {
-    private $header_token_key = 'token', $header_token_refresh_key= 'token_refresh';
     public function __construct()
     {
+
         //echo getcwd();
         if(preg_match('/wp-admin/i', getcwd()))
         {
@@ -21,16 +19,16 @@ class Login
 
     public function login_dent()
     {
-        add_action('rest_api_init', [&$this, 'register_routes']);
+        add_action('rest_api_init', [&$this, 'register_route']);
     }
 
-    public function register_routes()
+    public function register_route()
     {
-
-        register_rest_route('dental/v1', '/login',
+        register_rest_route('/dental/v1', '/login',
             [
                 'methods' => 'POST',
                 'callback' => [&$this,'pre_login'],
+                'permission_callback' => '__return_true',
                 'args' =>
                     [
                         'login' =>
@@ -82,32 +80,22 @@ class Login
         if(is_wp_error($user)){
             $response='Не верный логин или пароль';
             $user=null;
-            $response = rest_ensure_response( ['success' => true, 'response' => $response, 'params' => $return_params] );
+            $response = rest_ensure_response( ['success' => true, 'response' => $response, 'user'=> $user, 'params' => $return_params] );
             $response->set_status( 401 );
             return $response;
         }
 
+
         $return_params['user_id'] = $user->data->ID;
 
-        $return_params['redirect']=getcwd();//на будущее
+        $return_params['redirect'] = get_home_url();//на будущее
 
         //Подготовка объекта response WordPress
-        $response = rest_ensure_response( ['success' => true, 'response' => $response, 'params' => $return_params] );
+        $response = rest_ensure_response( ['success' => true, 'response' => $response, 'user' => true, 'params' => $return_params] );
 
         $response->set_status( 200 );
-        //Возвращаем заголовки с токеном и рефреш-токеном клиенту
-        $response->set_headers( [
-                $this->header_token_key         => $return_params['token'],
-                $this->header_token_refresh_key => $return_params['token_refresh'],
-            ]
-        );
 
         return $response;
-    }
-
-    public function token_actual()
-    {
-
     }
 
 

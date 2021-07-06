@@ -21,22 +21,24 @@ class Reg{
     }
     //Предупреждение о несоответсвии проверки регулярному выражению
     public function warningValid($arr){
+        $warning = null;
         if ($arr[0] == 0)
         {
-            print_r('Поле username не должно содержать пробелов или табуляций!');
+            $warning = ' Поле username не должно содержать пробелов или табуляций!';
         }
         if ($arr[1] == 0)
         {
-            print_r('Поле password должно содержать по одной и больше заглавной и строчной букве, одной и больше цифре и хотя бы один из следуюших символов !@#$%^&*');
+            $warning .= ' Поле password должно содержать по одной и больше заглавной и строчной букве, одной и больше цифре и хотя бы один из следуюших символов !@#$%^&*';
         }
-        return $arr;
+
+        return $warning??$arr;
     }
     
     public function setRegCompany(){
         $db = Connect::getConnect();
         $login = $db->prepare("SELECT user_login FROM wp_users WHERE user_login = :name");
         $login->execute(['name' => $this->company]);
-        
+
         if($login->fetch()['user_login'] == $this->company){
             exit('Пользователь уже существует.');
         }
@@ -48,7 +50,7 @@ class Reg{
         if($this->password === $this->retrypass){
             return $this->query = "INSERT INTO wp_users (user_login, user_pass, user_nicename) VALUES (:company, :pass, :name)";
         }else{
-            exit('Набранные пароли не совпадаюyт.');
+            exit('Набранные пароли не совпадаюyт: '.$this->password.' | '.$this->retrypass);
         }
 
     }
@@ -71,7 +73,7 @@ class Reg{
         if($this->password === $this->retrypass){
             return $this->query = "INSERT INTO wp_users (user_login, user_pass, user_nicename) VALUES (:worker, :pass, :name)";
         }else{
-            exit('Набранные пароли не совпадают.');
+            exit('Набранные пароли не совпадают.'.$this->password.'|'.$this->retrypass);
         }
 
         if(strlen($this->password)<6){
@@ -84,6 +86,7 @@ class Reg{
     public function setIdWorker(){
         return $this->query = "INSERT INTO workers (wp_users_id) VALUES (:id)";
     }
+
 
 }
 ?>

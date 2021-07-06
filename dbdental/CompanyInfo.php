@@ -14,7 +14,7 @@ class CompanyInfo
         for($i=0;$i<sizeof($this->array);$i++){
             $this->arrayCompany[$this->arrayKey[$i]] = $this->array[$i];
         }
-        var_dump($this->arrayCompany);
+        //var_dump($this->arrayCompany);
         return $this->query = "UPDATE company SET name_company = :nameCompany, group_gods = :gods, contact = :contact, info = :info WHERE id = :id";
     }
 
@@ -22,9 +22,15 @@ class CompanyInfo
     public function setEmailCompany($email, $id){
         $this->id = $id;
         if(filter_var($email, FILTER_VALIDATE_EMAIL)){
-            var_dump('ok');
-            return $this->query = "UPDATE wp_users SET user_email = :email WHERE ID = :id";
+            //var_dump('ok');
+            return $this->query = "UPDATE wp_users SET user_email = :email, display_name = :displayname WHERE ID = :id";
         }
+    }
+
+    public function succesRegResponse($email)
+    {
+        wp_safe_redirect(get_home_url()."/?reg=success&email={$email}");
+        exit;
     }
 
     public function getInfoCompany($id){

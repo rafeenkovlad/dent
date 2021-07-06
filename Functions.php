@@ -42,6 +42,8 @@ class Functions
             var_dump($insertId = $db->prepare($reg->setIdCompany()));
             var_dump($insertId->execute(['id' => $db->lastInsertId()]));
             return  $wp_user_id;
+        }else{
+            echo $arr;
         }
     }
 
@@ -69,19 +71,23 @@ class Functions
             'contact' => $company->arrayCompany['contact'], 'info' => $company->arrayCompany['info'], 'id' => $company->arrayCompany['id']]);
     }
 
+
 //принимаем email  компании
     public function dataEmail($email)
     {
        $this->email = $email;
     }
 
-//запись электронного адресса компании
-    public function companyEmail($db, $id)
+//запись электронного адресса компании and display_name
+    public function companyEmail($db, $id, $name)
     {
         if(preg_match('/^[^\s*] ([a-zA-Z0-9_.])+ @ ([a-zA-Z0-9])+ [.] ([a-zA-Z0-9])+$/xsi', $this->email)) {
             $company = new CompanyInfo();
             $setEmail = $db->prepare($company->setEmailCompany($this->email, $id));
-            $setEmail->execute(['email' => $this->email, 'id' => $company->id]);
+            $setEmail->execute(['email' => $this->email, 'displayname' => $name, 'id' => $company->id]);
+            $company->succesRegResponse($this->email);
+        }else{
+            echo 'Некорректный Email:'. $this->email;
         }
     }
 
@@ -103,17 +109,19 @@ class Functions
         //создаем массив со значениями из массива pdo
         $bdListId = array_values($isset->fetchAll(\PDO::FETCH_ASSOC));
         $arrCSV =& $list->getGods($csv);
-
-        if(sizeof($bdListId) > sizeof($arrCSV))
+        $n_strok =0;
+        if(sizeof($bdListId) > sizeof($arrCSV)-1)
         {
-            //обновляем прайс если строк в таблице больше чем в файле
             $i = 0;
+            //обновляем прайс если строк в таблице больше чем в файле
             $update = $db->prepare($list::updateCSV());
             foreach($arrCSV as $thisArr){
-                $update->execute(['name' => $thisArr['name'], 'sirial_number' => $thisArr['sirial_numb'],
+                $write = $update->execute(['name' => $thisArr['name'], 'sirial_number' => $thisArr['sirial_numb'],
                     'made_in_company' => $thisArr['made_in_company'], 'price' => $thisArr['price'],
                     'litle_info' => $thisArr['litle_info'], 'id' => $bdListId[$i++]['id']]);
+                if($write){ $n_strok++;}
             }
+            $list->succesCsvResponse($n_strok);
 
 
         }else{
@@ -124,11 +132,13 @@ class Functions
             {
                 $setCSV = $db->prepare($list::queryCSV());
                 foreach($arrCSV as $thisArr) {
-                    $setCSV->execute(['name' => $thisArr['name'], 'sirial_number' => $thisArr['sirial_numb'],
+                    $write = $setCSV->execute(['name' => $thisArr['name'], 'sirial_number' => $thisArr['sirial_numb'],
                         'made_in_company' => $thisArr['made_in_company'], 'price' => $thisArr['price'],
                         'litle_info' => $thisArr['litle_info'], 'company_id' => $wpUserId]);
+                    if($write){ $n_strok++;}
                 }
             }
+            $list->succesCsvResponse($n_strok);
 
         }
 
@@ -147,6 +157,8 @@ class Functions
             $insertId = $db->prepare($reg->setIdWorker());
             $insertId->execute(['id' => $db->lastInsertId()]);
             return $wp_user_id;
+        }else{
+            echo $arr;
         }
     }
 
@@ -162,7 +174,7 @@ class Functions
         $worker = new WorkerInfo();
         $setWorker = $db->prepare($worker->setInfoWorker($this->dataWorker));//тут должны быть array переменнx
         $setWorker->execute(['nameWorker' => $worker->arrayWorker['full_name'], 'dolgnost' => $worker->arrayWorker['dolgnost'],
-            'contacts' => $worker->arrayWorker['contacts'], 'id' => $worker->arrayWorker['id']]);
+            'contact' => $worker->arrayWorker['contacts'], 'about_your' => $worker->arrayWorker['about'], 'id' => $worker->arrayWorker['id']]);
     }
 
 //загрузка изображения сотрудника
@@ -191,6 +203,7 @@ class Functions
         $getIssetPosts->execute(['id' => $this->idPost]);
         $wpPosts =& $getIssetPosts->fetchAll();
 
+
         if(!empty($wpPosts))
         {
             foreach($wpPosts as $value){
@@ -202,7 +215,8 @@ class Functions
 
                 $likeArr = $arr + $this->idUserLike;
                 $setLikeUser = $db->prepare($rait->raitSetLikeUser());
-                $setLikeUser->execute(['like_array' => json_encode($likeArr), 'wp_posts_id' => $nowArr['wp_posts_id']]);
+                return $setLikeUser->execute(['like_array' => json_encode($likeArr), 'wp_posts_id' => $nowArr['wp_posts_id']]);
+
             }
 
         }else{
@@ -221,9 +235,9 @@ class Functions
 
             $setLike = $db->prepare($rait->raitSetLike());
 
-            if (!$setLike->execute(['name_co_and_wo' => $this->name, 'wp_users_id' => $this->idUser, 'like_array' => json_encode($this->idUserLike), 'wp_posts_id' => $this->idPost])) {
-                print_r($setLike->errorInfo());
-            }
+            if (!$setOk = $setLike->execute(['name_co_and_wo' => $this->name, 'wp_users_id' => $this->idUser, 'like_array' => json_encode($this->idUserLike), 'wp_posts_id' => $this->idPost])) {
+                var_dump($setLike->errorInfo());
+            } else {return $setOk;}
         }
     }
 
@@ -232,11 +246,10 @@ class Functions
     public function likeUser($db)
     {
         $rait = new Rait();
-
         $getLike = $db->prepare($rait->getLike());
         $getLike->execute(['wp_post_id' => $this->idPost]);
         $jsonArr = $getLike->fetch()['like_array'];
-        self::$likeArr =& json_decode($jsonArr, TRUE);
+        return self::$likeArr =& json_decode($jsonArr, TRUE);
     }
 
 //Запись поста о помощи незарегистрированными пользователями

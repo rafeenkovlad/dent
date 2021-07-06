@@ -1,5 +1,8 @@
 
+
 <?php
+
+
 require_once 'vendor/autoload.php';
 use Dbdental\db\Connect;
 use FunctionCommand\Functions;
@@ -80,3 +83,4 @@ print_r('test!!!!!');
 $_REQUEST['name_serach'] = 'onedent';
 $func->searchWorks('dent', $db);
 
+*/

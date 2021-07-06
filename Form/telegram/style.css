@@ -61,7 +61,7 @@ textarea:focus,
 	}
 
 
-.balon1 a {
+/* .balon1 a {
 
 	background: #42a5f5;
 	color: #fff !important;
@@ -105,7 +105,7 @@ textarea:focus,
 	font-size: .750rem;
 	color: rgba(84, 110, 122,1.0);
   
-	}
+	} */
 	
 .bg-sohbet:before {
 
@@ -120,3 +120,111 @@ textarea:focus,
 	position: absolute;   
 
 	}
+.tg_rounded_hei{
+	box-shadow: none !important;
+    border-left: 1px #eee solid !important;
+}
+
+.message1{
+	background: #42a5f5;
+	color: #fff !important;
+	border-radius: 20px 20px 3px 20px;
+	display: block;
+	max-width: 75%;
+	padding: 7px 13px 7px 13px;
+}
+	
+.message1:before {
+
+	content: attr(data-is);
+	position: absolute;
+	left: 13px;
+	bottom: -0.8em;
+	display: block;
+	font-size: .750rem;
+	color: rgba(84, 110, 122,1.0);
+  
+}
+.message2{
+
+	background: #f1f1f1;
+	color: #000 !important;
+	border-radius: 20px 20px 20px 3px;
+	display: block;
+	max-width: 75%;
+	padding: 7px 13px 7px 13px;
+}
+	
+.message2:before {
+
+	content: attr(data-is);
+	position: absolute;
+	left: 13px;
+	bottom: -0.8em;
+	display: block;
+	font-size: .750rem;
+	color: rgba(84, 110, 122,1.0);
+  
+}
+.message1_bot{
+	margin-left: auto;
+}
+
+footer .container{
+	max-width: unset !important;
+}
+.s1 .sidebar-content{
+	height: unset !important;
+}
+
+@media screen and (max-width: 1200px){
+	.form_dental{
+		position: unset !important;
+		margin: 6px !important;
+		width: calc(100% - 6px) !important;
+	}
+	.s2 .sidebar-content .position-absolute,
+	.s2 .sidebar-content .position-relative{
+		position: unset !important;
+		width: 100%;
+		display: block;
+	}
+	.tg_rounded_hei{
+		width: 100%;
+		display: block;
+		overflow: unset !important;
+		margin-top: 30px;
+	}
+	form.form_dental label[for="reset"]{
+		float: unset !important;
+	}
+	.form.form_dental label{
+		margin-bottom: 15px;
+	}
+	.form_dental.factive .reg_dental_sub_bg{
+		display: none !important;
+	}
+	.form_dental #arrow{
+		display: none !important;
+	}
+	.form_dental #wrapper{
+		padding: 0 !important;
+		width: 100% !important;
+	}
+	.form_dental .reg_dental_sub_but{
+		margin-left: auto;
+		margin-right: 10px;
+	}
+	#custom_html-3.widget_text{
+		display: none !important;
+	}
+	.bg-sohbet:before{
+		height: 0px;
+		position: unset;
+	}
+}
+@media screen and (max-width: 480px){
+	.s2{
+		max-height: 1000px;
+	}
+}
