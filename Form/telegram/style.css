@@ -61,7 +61,11 @@ textarea:focus,
 	}
 
 
+<<<<<<< HEAD
 /*.balon1 a {
+=======
+/* .balon1 a {
+>>>>>>> a8da98e56e958cdac2f4bc81d366bb6ac6258443
 
 	background: #42a5f5;
 	color: #fff !important;
@@ -106,9 +110,15 @@ textarea:focus,
 	display: block;
 	font-size: .750rem;
 	color: rgba(84, 110, 122,1.0);
+<<<<<<< HEAD
 
 	}
 
+=======
+  
+	} */
+	
+>>>>>>> a8da98e56e958cdac2f4bc81d366bb6ac6258443
 .bg-sohbet:before {
 
 	content: "";
@@ -159,6 +169,26 @@ textarea:focus,
 
 .message2:before {
 
+<<<<<<< HEAD
+=======
+	}
+.tg_rounded_hei{
+	box-shadow: none !important;
+    border-left: 1px #eee solid !important;
+}
+
+.message1{
+	background: #42a5f5;
+	color: #fff !important;
+	border-radius: 20px 20px 3px 20px;
+	display: block;
+	max-width: 75%;
+	padding: 7px 13px 7px 13px;
+}
+	
+.message1:before {
+
+>>>>>>> a8da98e56e958cdac2f4bc81d366bb6ac6258443
 	content: attr(data-is);
 	position: absolute;
 	left: 13px;
@@ -166,7 +196,32 @@ textarea:focus,
 	display: block;
 	font-size: .750rem;
 	color: rgba(84, 110, 122,1.0);
+<<<<<<< HEAD
 
+=======
+  
+}
+.message2{
+
+	background: #f1f1f1;
+	color: #000 !important;
+	border-radius: 20px 20px 20px 3px;
+	display: block;
+	max-width: 75%;
+	padding: 7px 13px 7px 13px;
+}
+	
+.message2:before {
+
+	content: attr(data-is);
+	position: absolute;
+	left: 13px;
+	bottom: -0.8em;
+	display: block;
+	font-size: .750rem;
+	color: rgba(84, 110, 122,1.0);
+  
+>>>>>>> a8da98e56e958cdac2f4bc81d366bb6ac6258443
 }
 .message1_bot{
 	margin-left: auto;
