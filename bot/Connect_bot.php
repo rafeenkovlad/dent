@@ -22,7 +22,7 @@
 
      private static function get_token()
      {
-         self::$token = '1809961465:AAEeYmPU0ttCPlPK8z9gTX7OeLd6CZtjTwM';
+         self::$token = 'cut';
      }
 
      private function commands()
