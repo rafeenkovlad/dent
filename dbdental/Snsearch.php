@@ -42,15 +42,15 @@ class Snsearch
 
     public function addUrl($name, $sirial_number, $company_id)
     {
-        return "<a href ='https://d993e4fea038.ngrok.io/dental2/wordpress/wp-json/dental/v1/get-telegram-url?id_user={$company_id}&sn={$sirial_number}'> {$name} </a> : {$sirial_number}";
+        return "<a href ='https://dentaline.info/wp-json/dental/v1/get-telegram-url?id_user={$company_id}&sn={$sirial_number}'> <b>{$name}</b> </a> : {$sirial_number}";
     }
 
     private function editResponseTelegramGroup($arr)
     {
         foreach($arr as $build)
         {
-            $percent = $build['sn']['percent'] * 100;
-            $str = $build['sn']['word']." совпадение: {$percent}%\n";
+            $percent = round($build['sn']['percent'] * 100, 2);
+            $str = "SN: <b>".$build['sn']['word']."</b> совпадение: {$percent}%\n";
             foreach($build['response'] as $url)
             {
                 $str.=  "{$url}\n";

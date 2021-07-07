@@ -36,21 +36,26 @@ class Telegramgroup
             ->orderBy('id', 'desc')
             ->take(20)
             ->get();
-        $arr = json_decode($json);
+        $arr =& $json;
+        
         foreach ($arr as $text)
         {
+
             $text = json_decode($text->message, true);
+            $str = explode("\n",$text['bot']??$text['message']['text']);
+            file_put_contents(__DIR__ . '/message.txt', print_r($text, true));
+
             if(!isset($text['bot'])):
                 self::$messages[] = [
                     'from' => $text['message']['from']['first_name'],
-                    'date' => $date = $text['message']['date'],
-                    'text' => $text['message']['text']
+                    'date' => $date = date('H:i d.m.y', $text['message']['date']),
+                    'text' => implode("<br />", $str)
                     ];
             else:
                 self::$messages[] = [
                     'from' => 'dentaline_bot',
                     'date' => $date,
-                    'text' => $text['bot'],
+                    'text' => trim(implode("<br />", $str), "<br />"),
                     'float' => 'right'
                     ];
             endif;
