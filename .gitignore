@@ -1,0 +1,10 @@
+bot/file/*
+csv/
+img_company/*
+img_worker/*
+dbdental/Connect.php
+app/config/loaders.php
+bot/Connect_bot.php
+bot/message.txt
+
+

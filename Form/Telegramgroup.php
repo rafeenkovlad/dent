@@ -43,7 +43,6 @@ class Telegramgroup
 
             $text = json_decode($text->message, true);
             $str = explode("\n",$text['bot']??$text['message']['text']);
-            file_put_contents(__DIR__ . '/message.txt', print_r($text, true));
 
             if(!isset($text['bot'])):
                 self::$messages[] = [
