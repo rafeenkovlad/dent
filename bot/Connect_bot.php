@@ -22,7 +22,7 @@
 
      private static function get_token()
      {
-         self::$token = '1756119381:AAGWjkLdQHEPpgtLHyAJXdqBfxnKpmZhNig';
+         self::$token = '1809961465:AAEeYmPU0ttCPlPK8z9gTX7OeLd6CZtjTwM';
      }
 
      private function commands()
@@ -95,10 +95,10 @@
              $this->prepare_non_file();
          }
 
-         $token = '1756119381:AAGWjkLdQHEPpgtLHyAJXdqBfxnKpmZhNig';
+
          if(isset($photo) || isset($document) || isset($voice))
          {
-             $ch = curl_init('https://api.telegram.org/bot' . $token . '/getFile');
+             $ch = curl_init('https://api.telegram.org/bot' . self::$token . '/getFile');
              curl_setopt($ch, CURLOPT_POST, 1);
              curl_setopt($ch, CURLOPT_POSTFIELDS, array('file_id' => $photo['file_id'] ?? $document ?? $voice ));
              curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
