@@ -3,9 +3,6 @@
 <head>
   <meta charset="UTF-8">
   <title>Сохранение данных dentaline</title>
-  <link rel='stylesheet' href='wp-content/plugins/db/Form/profile/src/bootstrap.min.css'>
-<link rel="stylesheet" href="wp-content/plugins/db/Form/profile/src/style.css">
-<script src="wp-content/plugins/db/Form/profile/src/prefixfree.min.js"></script>
 
 </head>
 <body>
@@ -55,7 +52,6 @@
 </div>
 <!-- partial -->
 
-  <script src='wp-content/plugins/db/Form/profile/src/jquery.min.js'></script><script  src="wp-content/plugins/db/Form/profile/src/script.js"></script>
 <?php //$request = json_encode(['login' => $_REQUEST['login'], 'password' => $_REQUEST['password'], 'repass' => $_REQUEST['repass'], 'reg_dental_sub' => $_REQUEST['reg_dental_sub']]); ?>
 <!-- <script type = "text/javascript">
     const arr = ;
