@@ -8,7 +8,6 @@ $(document).ready(function(){
 
         var form = new FormData($("#save_settings")[0]);
 
-
         $.ajax({
             url: ajaxUpdateProfile.url,
             method: 'POST',

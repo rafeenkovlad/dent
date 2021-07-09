@@ -1,12 +1,92 @@
 <!-- jquery.min.js and script.js уже подключены в футере. style.css подключен.-->
-<?= self::$profile ?> <!-- Значения профиля доступны как  self::$profile->id  -->
+<!-- Значения профиля доступны как  self::$profile->id  -->
+<div class="profile">
+    <div class="profile_img">
+        <img class ="list-gods-img" data-image = "<?= plugins_url('db/'.self::$profile->company_logo) ?>" src="<?= plugins_url('db/'.self::$profile->company_logo) ?>" alt="">
+    </div>
+    <div class="profile_text">
+        <div>
+            <div class="profile_text1">Контакты: <?= self::$profile->contact ?></div>
+        </div>
+        <div>
+            <div class="profile_text1">Информация: <?= self::$profile->info ?></div>
+        </div>
+        <div>
+            <div class="profile_text1">email: <?= self::$profile->email ?></div>
+        </div>
+        <div>
+            <div class="profile_text1">Лайки: <?= self::$profile->email ?></div>
+        </div>
+        <div>
+            <div class="profile_text1">Компания: <?= (self::$profile->name_company !== NULL) ? self::$profile->name_company : self::$profile->worker ?></div>
+        </div>
+    </div>
+</div>
+<?= self::$profile ?>
 <br>
 рейтинг публикаций: <?= self::$like_sum ?>
 <br>
+
+<div class="profile_cont_table">
+<table>
+    <thead>
+        <tr>
+            <th>id</th>
+            <th>name</th>
+            <th>sirial_number</th>
+            <th>made_in_company</th>
+            <th>price</th>
+            <th>litle_info</th>
+            <th>company_id</th>
+            <th>img</th>
+        </tr>
+    </thead>
+    <tbody>
+        
 <?php foreach (self::$list as $object): ?>
-
- <?= $object->id ?> | <?= $object->name ?> | <?= $object->sirial_number ?> | <?= $object->made_in_company ?> | <?= $object->price ?> | <?= self::imgUrl($object->img_url,$object->id) ?> | <?= $object->company_id ?></br>
-
+            <tr>
+                <td><?= $object->id ?></td>
+                <td class="profile_click_chat"><?= $object->name ?></td>
+                <td class="profile_click_sn"><?= $object->sirial_number ?></td>
+                <td><?= $object->made_in_company ?></td>
+                <td><?= $object->price ?></td>
+                <td><?= $object->litle_info ?></td>
+                <td><?= $object->company_id ?></td>
+                <td><?= self::imgUrl($object->img_url,$object->id) ?></td>
+            </tr>
 <?php endforeach; ?>
 
+</tbody>
+</table>
+</div>
+<script>
+    $(document).ready(function(){
+        function blockFinder(el){
+            console.log(el)
+            $('html, body').animate({scrollTop: $(el).offset().top - 300}, 1000);
+            setTimeout(function(){ $(el).css('background', 'rgb(215 239 247)'); }, 500);
+            setTimeout(function(){ $(el).css('background', '#ffffff'); }, 700);
+            setTimeout(function(){ $(el).css('background', 'rgb(215 239 247)'); }, 900);
+        };
+        function findTxt(param){
+            setTimeout(function(){
+                let el = $($('.profile_click_sn:contains("' + param + '")')[0]);
+                if(el.length !== 0){
+                    blockFinder($(el).parent());
+                }
+                // $('#sohbet').animate({scrollTop: $("#sohbet").scrollTop() + $($('.message1:contains("' + param + '")')[0]).offset().top - $('#sohbet').offset().top}, 1000);
+            }, 600);
+        };
 
+        var url = location.href.split('sn=')[1];
+        if(url !== undefined){
+            console.log('2')
+            findTxt(url);
+        }
+        // var tops = $('#tg_rounded_hei').offset().top;
+        // $('.profile_click_chat').on('click', function(e){
+        //     findTxt(this, 0);
+        // });
+    });
+
+</script>

@@ -7,7 +7,7 @@ class Write_profile {
     {
         add_filter( 'template_include', function(){
 
-            require_once ('profile/src/index.php');
+            load_template('wp-content/plugins/db/Form/profile/src/index.php');
         });
     }
 }

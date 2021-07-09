@@ -1,8 +1,8 @@
 <?php
-
-
 namespace Dbdental\img;
 
+require_once('wp-content/plugins/db/vendor/thumbs-master/Thumbs.php');
+use thumbsmaster\thumbs\Thumbs;
 
 class Imgupload
 {
@@ -16,8 +16,15 @@ class Imgupload
     }
 
     //проверка есть ли изображение копании/работника
-    public function dbImg()
+    public function existsImg($name)
     {
+        $adress_com = "wp-content/plugins/db/img_company/{$this->wpUserId}_com.jpeg";
+        $adress_work = "wp-content/plugins/db/img_worker/{$this->wpUserId}_worker.jpeg";
+        $img_com = file_exists($adress_com);
+        $img_work = file_exists($adress_work);
+        if($img_com and $name == 'com') unlink($adress_com);
+        if($img_work and $name == 'work') unlink($adress_work);
+
 
     }
 
@@ -29,12 +36,16 @@ class Imgupload
             'image/gif' => imageCreateFromGif($this->img['tmp_name'])
             ];
 
+        //удаление предыдущего изображения
+        if($this->img['size'] !== 0)$this->existsImg('com');
+
         $imgFunc = array_filter($imgFuncArr, function($func){
             return $this->img['type'] == $func;
         },ARRAY_FILTER_USE_KEY);
-
-        $correctImg = imagecrop($imgFunc[key($imgFunc)],['x' => imageSX($imgFunc[key($imgFunc)])/2 - 320, 'y' => imageSY($imgFunc[key($imgFunc)])/2 - 120, 'width' => 640, 'height' => 240]);
-        imageTtfText($correctImg, 16,0,4,230, imagecolorallocatealpha($correctImg, 128, 128, 128, 47), 'db/img_company/font/755.ttf', "dentalline");
+        $witdh =  imageSX($imgFunc[key($imgFunc)]);
+        $height = imageSY($imgFunc[key($imgFunc)]);
+        $correctImg = imagecrop($imgFunc[key($imgFunc)],['x' => 0, 'y' => 0, 'width' => $witdh, 'height' => $height]);
+        imageTtfText($correctImg, 16,0,4, $height-5, imagecolorallocatealpha($correctImg, 128, 128, 128, 47), 'wp-content/plugins/db/img_company/font/755.ttf', "dentaline.info");
         header("Content_type: image/jpeg");
         imageJpeg($correctImg, "wp-content/plugins/db/img_company/{$this->wpUserId}_com.jpeg");
         imageDestroy($correctImg);
@@ -49,12 +60,16 @@ class Imgupload
             'image/png' => imageCreateFromPng($this->img['tmp_name']),
             'image/gif' => imageCreateFromGif($this->img['tmp_name']) ];
 
+        //удаление предыдущего изображения
+        if($this->img['size'] !== 0)$this->existsImg('work');
+
         $imgFunc = array_filter($imgFuncArr, function($func){
             return $this->img['type'] == $func;
         },ARRAY_FILTER_USE_KEY);
-
-        $correctImg = imagecrop($imgFunc[key($imgFunc)],['x' => imageSX($imgFunc[key($imgFunc)])/2 - 120, 'y' => imageSY($imgFunc[key($imgFunc)])/2 - 120, 'width' => 240, 'height' => 240]);
-        imageTtfText($correctImg, 16,0,4,230, imagecolorallocate($correctImg, 128, 128, 128), 'db/img_company/font/755.ttf', "dentalline");
+        $witdh =  imageSX($imgFunc[key($imgFunc)]);
+        $height = imageSY($imgFunc[key($imgFunc)]);
+        $correctImg = imagecrop($imgFunc[key($imgFunc)],['x' => 0, 'y' => 0, 'width' => $witdh, 'height' => $height]);
+        imageTtfText($correctImg, 16,0,4,$height-5, imagecolorallocatealpha($correctImg, 128, 128, 128, 47), 'wp-content/plugins/db/img_company/font/755.ttf', "dentaline.info");
         header("Content_type: image/jpeg");
         imageJpeg($correctImg, "wp-content/plugins/db/img_worker/{$this->wpUserId}_worker.jpeg");
         imageDestroy($correctImg);

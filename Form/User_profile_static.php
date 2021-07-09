@@ -7,7 +7,7 @@ class User_profile_static
 {
     private static $profile;
     private static $list;
-    private static $id_wp_user, $id_post, $like_sum, $made_in_company, $price, $litle_info, $img_url, $company_id;
+    private static $id_wp_user, $id_post, $like_sum, $made_in_company, $price, $litle_info, $img_url, $company_id, $user_id;
 
     public static function user_profile()
     {
@@ -24,6 +24,8 @@ class User_profile_static
                 add_action('wp_footer', function(){
                     wp_enqueue_script('userprofile_js');
                 });
+
+
         });
 
         add_shortcode('profile_list',[User_profile_static::class, 'get_list']);
@@ -35,6 +37,7 @@ class User_profile_static
         self::$id_wp_user = get_the_author_meta('ID');
         $profile = Profile_user::getUserProfileObject(self::$id_wp_user);
         self::$profile = $profile[0];
+        self::$profile->company_logo = self::$profile->company_logo ?? self::$profile->img;
         $list = Profile_user::getUserListGods(self::$id_wp_user);
         self::$list = $list;
         $like_sum = Profile_user::like_sum_author(self::$id_wp_user);
@@ -48,21 +51,22 @@ class User_profile_static
 
     private static function imgUrl($img_id,$id)
     {
-        $form = '
+        self::$user_id = wp_get_current_user()->ID;
+        $form = (self::$id_wp_user == self::$user_id)?'
             <form id="form_god_upload" method="post" action="" enctype="multipart/form-data">
                 <input type="file" name="img_god_upload" id="img_god_upload" multiple="false" />
                 <input type="hidden" name="id_god" value="'.$id.'"  />
                 <input type="hidden" name="id_post" value="'.self::$id_post.'"  />'.
                 wp_nonce_field('img_god_upload', 'nonce_img_upload').
                 '<input type="submit" id="img_god_submit" name="img_god_submit" value="добавить" />
-            </form>';
+            </form>': NULL;
         return (is_null($img_id))?$form : wp_get_attachment_image($img_id, 'list_gods_img', false, array('class' => 'list-gods-img', 'data-image' => wp_get_attachment_url($img_id)));
 
     }
 
     public static function set_img_upload()
     {
-        if(isset($_POST['nonce_img_upload']) && wp_verify_nonce($_POST['nonce_img_upload'], 'img_god_upload') && self::$id_wp_user === wp_get_current_user()->ID)
+        if(isset($_POST['nonce_img_upload']) && wp_verify_nonce($_POST['nonce_img_upload'], 'img_god_upload') && self::$id_wp_user === self::$user_id)
         {
             switch($_FILES['img_god_upload']['type']):
                 case 'image/jpeg':

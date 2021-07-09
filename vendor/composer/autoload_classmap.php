@@ -89,7 +89,6 @@ return array(
     'Carbon\\Traits\\Units' => $vendorDir . '/nesbot/carbon/src/Carbon/Traits/Units.php',
     'Carbon\\Traits\\Week' => $vendorDir . '/nesbot/carbon/src/Carbon/Traits/Week.php',
     'Carbon\\Translator' => $vendorDir . '/nesbot/carbon/src/Carbon/Translator.php',
-    'Composer\\InstalledVersions' => $vendorDir . '/composer/InstalledVersions.php',
     'Dbdental\\chat\\Chat' => $baseDir . '/dbdental/Chat.php',
     'Dbdental\\company\\CompanyInfo' => $baseDir . '/dbdental/CompanyInfo.php',
     'Dbdental\\db\\Connect' => $baseDir . '/dbdental/Connect.php',
@@ -1782,5 +1781,6 @@ return array(
     'UnhandledMatchError' => $vendorDir . '/symfony/polyfill-php80/Resources/stubs/UnhandledMatchError.php',
     'ValueError' => $vendorDir . '/symfony/polyfill-php80/Resources/stubs/ValueError.php',
     'XdgBaseDir\\Xdg' => $vendorDir . '/dnoegel/php-xdg-base-dir/src/Xdg.php',
+    'thumbsmaster\\thumbs\\Thumbs' => $vendorDir . '/thumbs-master/Thumbs.php',
     'voku\\helper\\ASCII' => $vendorDir . '/voku/portable-ascii/src/voku/helper/ASCII.php',
 );

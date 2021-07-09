@@ -51,7 +51,8 @@
 	    "Filter\\newpost\\": "filter",
 	    "Form\\rait\\": "Form",
 	    "Route\\Wp\\": "route",
-	    "Form\\chat\\": "Form"	
+	    "Form\\chat\\": "Form",
+	    "thumbsmaster\\thumbs\\": "vendor/thumbs-master"	
 
         },
 	"files": [

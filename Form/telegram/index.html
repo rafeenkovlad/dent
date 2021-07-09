@@ -38,7 +38,7 @@
 					
 			  </div>
 			
-				<div class="card bg-sohbet border-0 m-0 p-0 tg_rounded_hei1" style="height: 100vh;">
+				<div class="card bg-sohbet border-0 m-0 p-0 tg_rounded_hei1"  id="tg_rounded_hei" style="height: 100vh;">
 			  <div id="sohbet" class="card border-0 m-0 p-0 position-relative bg-transparent tg_rounded_hei1" style="overflow-y: auto; height: 100vh;">
 				  <?php foreach(self::$messages as $build): ?>
 				  <?php if($build['float'] == 'right'):?>
@@ -81,7 +81,7 @@
 						</div>
 					  </div>
 
-				</form> --!>
+				</form> -->
 
 			  </div>
 
@@ -91,6 +91,38 @@
 		</div>
 	  </div>
 
+	<script>
+		$(document).ready(function(){
+			if($('.form_dental').length == 0){
+				var clickButMenu = '';
+				function side_res(){
+					if($(window).width() <= 1200){
+						var heigb = $('.main-inner.group')[0].offsetHeight - $('.sidebar-toggle')[0].offsetHeight - $('.sidebar-top')[1].offsetHeight - 70;
+						if($(window).width() <= 480){
+							heigb = 1000;
+							$('.tg_rounded_hei').height(heigb - $('.card-footer')[0].offsetHeight);
+							$('.tg_rounded_hei1').height(heigb - $('.card-footer')[0].offsetHeight - $('.card-header')[0].offsetHeight);
+							$('.sidebar-content').height(heigb);
+						}
+						else{
+							$('.tg_rounded_hei').height(heigb - $('.card-footer')[0].offsetHeight);
+							$('.tg_rounded_hei1').height(heigb - $('.card-footer')[0].offsetHeight - $('.card-header')[0].offsetHeight);
+							$('.sidebar-content').height($('.main-inner.group')[0].offsetHeight - $('.sidebar-toggle')[0].offsetHeight);
+						}
+					}
+					else{
+					var heigb = $('.main-inner.group')[0].offsetHeight - $('.sidebar-top')[1].offsetHeight;
+					$('.tg_rounded_hei').height(heigb);
+					$('.tg_rounded_hei1').height(heigb - $('.card-footer')[0].offsetHeight - 60);
+					}
+				}
+				side_res();
+				$(window).resize(function(){
+					side_res();
+				});
+			}
+		});
+	</script>
 
 <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->

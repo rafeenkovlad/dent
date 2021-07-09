@@ -10,13 +10,13 @@ class User_profile
     public static function profile($profile)
     {
         self::$profile = $profile[0];
+        self::$profile->company_logo = self::$profile->company_logo ?? self::$profile->img;
 
 
         add_shortcode('profile_form',[User_profile::class, 'get_form'] );
 
         add_action('wp_enqueue_scripts', function(){
             if(is_page(149)){
-
                 wp_register_style('userprofile_css', plugins_url('db/Form/userprofile/dist/style.css'));
                 wp_enqueue_style('userprofile_css');
                 wp_register_script('userprofile_js', plugins_url('db/Form/userprofile/dist/script.js'));
@@ -28,6 +28,7 @@ class User_profile
                     wp_enqueue_script('userprofile_min_js');
                     wp_enqueue_script('ajax_profile_update');
                 });
+
 
             }
         });

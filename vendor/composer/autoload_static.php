@@ -34,6 +34,10 @@ class ComposerStaticInit0fc72c8767240f560261be6ff92fb5b7
         array (
             'voku\\' => 5,
         ),
+        't' => 
+        array (
+            'thumbsmaster\\thumbs\\' => 20,
+        ),
         'X' => 
         array (
             'XdgBaseDir\\' => 11,
@@ -144,6 +148,10 @@ class ComposerStaticInit0fc72c8767240f560261be6ff92fb5b7
         'voku\\' => 
         array (
             0 => __DIR__ . '/..' . '/voku/portable-ascii/src/voku',
+        ),
+        'thumbsmaster\\thumbs\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/thumbs-master',
         ),
         'XdgBaseDir\\' => 
         array (
@@ -483,7 +491,6 @@ class ComposerStaticInit0fc72c8767240f560261be6ff92fb5b7
         'Carbon\\Traits\\Units' => __DIR__ . '/..' . '/nesbot/carbon/src/Carbon/Traits/Units.php',
         'Carbon\\Traits\\Week' => __DIR__ . '/..' . '/nesbot/carbon/src/Carbon/Traits/Week.php',
         'Carbon\\Translator' => __DIR__ . '/..' . '/nesbot/carbon/src/Carbon/Translator.php',
-        'Composer\\InstalledVersions' => __DIR__ . '/..' . '/composer/InstalledVersions.php',
         'Dbdental\\chat\\Chat' => __DIR__ . '/../..' . '/dbdental/Chat.php',
         'Dbdental\\company\\CompanyInfo' => __DIR__ . '/../..' . '/dbdental/CompanyInfo.php',
         'Dbdental\\db\\Connect' => __DIR__ . '/../..' . '/dbdental/Connect.php',
@@ -2176,6 +2183,7 @@ class ComposerStaticInit0fc72c8767240f560261be6ff92fb5b7
         'UnhandledMatchError' => __DIR__ . '/..' . '/symfony/polyfill-php80/Resources/stubs/UnhandledMatchError.php',
         'ValueError' => __DIR__ . '/..' . '/symfony/polyfill-php80/Resources/stubs/ValueError.php',
         'XdgBaseDir\\Xdg' => __DIR__ . '/..' . '/dnoegel/php-xdg-base-dir/src/Xdg.php',
+        'thumbsmaster\\thumbs\\Thumbs' => __DIR__ . '/..' . '/thumbs-master/Thumbs.php',
         'voku\\helper\\ASCII' => __DIR__ . '/..' . '/voku/portable-ascii/src/voku/helper/ASCII.php',
     );
 
