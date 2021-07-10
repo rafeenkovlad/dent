@@ -1,9 +1,6 @@
 <?php
 namespace Dbdental\img;
 
-require_once('wp-content/plugins/db/vendor/thumbs-master/Thumbs.php');
-use thumbsmaster\thumbs\Thumbs;
-
 class Imgupload
 {
     private $img;

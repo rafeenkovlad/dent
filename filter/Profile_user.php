@@ -7,7 +7,7 @@ use Form\profile\{User_profile, User_profile_static};
 class Profile_user extends \Db
 {
     protected $namespace, $route, $args;
-    public function __construct($ligin_exists) //только для зарегистрированных пользователей
+    public function __construct($login_exists) //только для зарегистрированных пользователей
     {
         //регистрируем новый размер изображения каталога товаров
         add_image_size( 'list_gods_img', 64, 64, true );
@@ -20,7 +20,7 @@ class Profile_user extends \Db
         $this->args =[
             'methods' => 'POST',
             'callback' => [$this, 'update_profile'],
-            'permission_callback' => '__return_true'
+            'permission_callback' => fn()=> get_current_user_id()
         ];
 
         add_action('plugins_loaded', [&$this, 'regProfileChortcode']);

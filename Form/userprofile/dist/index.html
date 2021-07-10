@@ -45,7 +45,9 @@
 
   <input type="file" id="img_profile" name="img" accept="image/jpeg,image/png,image/gif">
   <input type="hidden" id="wp_user_id" name="wp_user_id" value="<?= self::$profile->wp_users_id ?>">
-  <input type="button" id="update_profile" value="Обновить">
+  <input type="button" id="update_profile" value="Сохранить изменения">
+
+        <br />Для формирования каталога предлагаемых товаров необходиомо скачать файл <a href = "<?= plugins_url('db/csv/list.csv') ?>" >list.csv </a>и заполнить. Для заполнения можно использовать microsoft excel. Важно сохранить файл в том же формате (list.csv).
 </form>
     <form method = "POST" action = "" enctype = "multipart/form-data">
       <input type = "file" name="csv"/>
