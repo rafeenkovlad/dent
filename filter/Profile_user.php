@@ -11,7 +11,7 @@ class Profile_user extends \Db
     {
         //регистрируем новый размер изображения каталога товаров
         add_image_size( 'list_gods_img', 64, 64, true );
-
+        
         //для авторизованных
         add_action('rest_api_init', [&$this, 'register_route']);
 
@@ -20,7 +20,7 @@ class Profile_user extends \Db
         $this->args =[
             'methods' => 'POST',
             'callback' => [$this, 'update_profile'],
-            'permission_callback' => fn()=> get_current_user_id()
+            'permission_callback' => fn()=> $login_exists>0
         ];
 
         add_action('plugins_loaded', [&$this, 'regProfileChortcode']);
@@ -28,6 +28,14 @@ class Profile_user extends \Db
         //для не авторизованных
         add_action('plugins_loaded', [&$this, 'regProfileChortcodeStatic']);
     }
+
+    /*private function console_log($data){ // сама функция
+        if(is_array($data) || is_object($data)){
+            echo("<script>console.log('php_array: ".json_encode($data)."');</script>");
+        } else {
+            echo("<script>console.log('php_string: ".$data."');</script>");
+        }
+    }*/
 
     public function register_route()
     {
