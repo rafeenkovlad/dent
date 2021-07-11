@@ -66,6 +66,8 @@ class Login_create extends \Db{
                     // Вставляем запись в базу данных
                     $post_data['post_author'] = $id_wp_user;
                     $post_id = wp_insert_post( $post_data );
+                    //запишем ид записи для назначения миниатюры
+                    $this->func()->setIdPostCompany($this->db(), $post_id, $id_wp_user);
                     wp_set_object_terms( $post_id, 'Profile', 'category');
                     wp_set_post_tags($post_id, 'company');
                     //Добавить роль
@@ -83,6 +85,8 @@ class Login_create extends \Db{
                     // Вставляем запись в базу данных
                     $post_data['post_author'] = $id_wp_user;
                     $post_id = wp_insert_post( $post_data );
+                    //запишем ид записи для назначения миниатюры
+                    $this->func()->setIdPostWorker($this->db(), $post_id, $id_wp_user);
                     wp_set_object_terms( $post_id, 'Profile', 'category');
                     wp_set_post_tags($post_id, 'worker');
                     //Добавить роль

@@ -99,6 +99,19 @@ class Functions
         $setUrl->execute(['company_logo' => $img->trainImg(), 'wp_users_id' => $img->wpUserId]);
     }
 
+    public function setIdPostCompany($db, $post_id, $user_id)
+    {
+        $query = "UPDATE company SET post_id = :post_id WHERE wp_users_id = :user_id";
+        $setId = $db->prepare($query);
+        $setId->execute(['post_id' => $post_id, 'user_id' => $user_id]);
+    }
+
+    public function setIdPostWorker($db, $post_id, $user_id)
+    {
+        $query = "UPDATE workers SET post_id = :post_id WHERE wp_users_id = :user_id";
+        $setId = $db->prepare($query);
+        $setId->execute(['post_id' => $post_id, 'user_id' => $user_id]);
+    }
 //Подготовка записи прайс листа компании
     public function sendCSV($db, $csv, $wpUserId)
     {

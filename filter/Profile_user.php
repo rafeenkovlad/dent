@@ -9,9 +9,12 @@ class Profile_user extends \Db
     protected $namespace, $route, $args;
     public function __construct($login_exists) //только для зарегистрированных пользователей
     {
+        require_once( ABSPATH . 'wp-admin/includes/image.php' );
+        require_once( ABSPATH . 'wp-admin/includes/file.php' );
+        require_once( ABSPATH . 'wp-admin/includes/media.php' );
         //регистрируем новый размер изображения каталога товаров
         add_image_size( 'list_gods_img', 64, 64, true );
-        
+
         //для авторизованных
         add_action('rest_api_init', [&$this, 'register_route']);
 
@@ -52,7 +55,9 @@ class Profile_user extends \Db
             ->update(['full_name' => $request['name_profile'], 'contact' => $request['contact_profile'], 'about_your' => $request['info_profile']]);
         $this->func()->setImgWorker($this->db(), $_FILES['img'], $request['wp_user_id']);
 
-
+        //устанавливаем миниатюру статической записи профиля
+        $id_img = media_handle_upload( 'img', $request['post_id'] );
+        set_post_thumbnail($request['post_id'], $id_img);
     }
 
     protected static function getUserProfileCompanyObject($id = null, $profile = Company::class)
