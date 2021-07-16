@@ -5,11 +5,12 @@ use Filter\profile\Profile_user;
 
 class User_profile
 {
-    private static $profile;
+    private static $profile, $like_sum;
 
     public static function profile($profile)
     {
         self::$profile = $profile[0];
+        self::$like_sum = Profile_user::like_sum_author(self::$profile->wp_users_id);
         self::$profile->company_logo = self::$profile->company_logo ?? self::$profile->img;
 
 
