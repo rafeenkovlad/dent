@@ -37,9 +37,13 @@ class User_profile
 
     public static function get_form()
     {
+        if(self::$profile->wp_users_id == 0):
+            print_r('Для просмотра и редактирования вашего профиля требуется авторизация.');
+        else:
        include('userprofile/dist/index.html');
         //Подключаем обработчик формы csv
         $setcsv = new Profile_user(true);
         $setcsv->setListCsv();
+        endif;
     }
 }

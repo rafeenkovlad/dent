@@ -15,17 +15,14 @@
             <div class="profile_text1">email: <?= self::$profile->email ?></div>
         </div>
         <div>
-            <div class="profile_text1">Лайки: <?= self::$profile->email ?></div>
+            <div class="profile_text1">Рейтинг: <?= self::$profile->email ?></div>
         </div>
         <div>
             <div class="profile_text1">Компания: <?= (self::$profile->name_company !== NULL) ? self::$profile->name_company : self::$profile->worker ?></div>
         </div>
     </div>
 </div>
-<?= self::$profile ?>
-<br>
-рейтинг публикаций: <?= self::$like_sum ?>
-<br>
+
 
 <div class="profile_cont_table">
 <table>
