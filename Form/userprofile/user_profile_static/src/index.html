@@ -28,14 +28,14 @@
 <table>
     <thead>
         <tr>
-            <th>id</th>
-            <th>name</th>
-            <th>sirial_number</th>
-            <th>made_in_company</th>
-            <th>price</th>
-            <th>litle_info</th>
-            <th>company_id</th>
-            <th>img</th>
+            <th>ID</th>
+            <th>наименование</th>
+            <th>SN</th>
+            <th>производитель</th>
+            <th>цена</th>
+            <th>описание</th>
+            <th>поставщик</th>
+            <th>изображение</th>
         </tr>
     </thead>
     <tbody>
@@ -48,8 +48,8 @@
                 <td><?= $object->made_in_company ?></td>
                 <td><?= $object->price ?></td>
                 <td><?= $object->litle_info ?></td>
-                <td><?= $object->company_id ?></td>
-                <td><?= self::imgUrl($object->img_url,$object->id) ?></td>
+                <td><?= (self::$profile->name_company !== NULL) ? self::$profile->name_company : self::$profile->full_name ?></td>
+                <td><?= self::imgUrl($object->img_url,$object->id)?></td>
             </tr>
 <?php endforeach; ?>
 

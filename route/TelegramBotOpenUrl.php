@@ -31,7 +31,10 @@ class TelegramBotOpenUrl extends \Db
             foreach($query->posts as $pageProfile)
             {
                 if ($pageProfile->post_author === $_GET['id_user']): return $this->redirect($pageProfile);
-                else: Alert::doactionAlert('Такого пользователя больше не существует.', 'Не удалось найти:');
+                else:
+                    wp_redirect(get_site_url(null, '', 'https'));
+                    Alert::doactionAlert('Такого пользователя больше не существует.', 'Не удалось найти:');
+                    exit;
                 endif;
             }
         }

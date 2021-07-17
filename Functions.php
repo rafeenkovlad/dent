@@ -129,6 +129,11 @@ class Functions
             //обновляем прайс если строк в таблице больше чем в файле
             $update = $db->prepare($list::updateCSV());
             foreach($arrCSV as $thisArr){
+                if($i == 0):
+                    $i++;
+                    continue;
+                endif;
+
                 $write = $update->execute(['name' => $thisArr['name'], 'sirial_number' => $thisArr['sirial_numb'],
                     'made_in_company' => $thisArr['made_in_company'], 'price' => $thisArr['price'],
                     'litle_info' => $thisArr['litle_info'], 'id' => $bdListId[$i++]['id']]);
@@ -144,7 +149,13 @@ class Functions
             if($delete->execute(['company_id' => $wpUserId]))
             {
                 $setCSV = $db->prepare($list::queryCSV());
+                $i = 0;
                 foreach($arrCSV as $thisArr) {
+                    if($i == 0):
+                        $i++;
+                        continue;
+                    endif;
+
                     $write = $setCSV->execute(['name' => $thisArr['name'], 'sirial_number' => $thisArr['sirial_numb'],
                         'made_in_company' => $thisArr['made_in_company'], 'price' => $thisArr['price'],
                         'litle_info' => $thisArr['litle_info'], 'company_id' => $wpUserId]);

@@ -47,6 +47,8 @@ class User_profile_static
 
         add_action('profile_list', [User_profile_static::class, 'set_img_upload']);
         do_action('profile_list');
+        add_action('del_img_profile', [User_profile_static::class, 'img_del']);
+        do_action('del_img_profile');
     }
 
     private static function imgUrl($img_id,$id)
@@ -60,7 +62,12 @@ class User_profile_static
                 wp_nonce_field('img_god_upload', 'nonce_img_upload').
                 '<input type="submit" id="img_god_submit" name="img_god_submit" value="добавить" />
             </form>': NULL;
-        return (is_null($img_id))?$form : wp_get_attachment_image($img_id, 'list_gods_img', false, array('class' => 'list-gods-img', 'data-image' => wp_get_attachment_url($img_id)));
+        $form_del = '<form id="img_delete" method="get" action="">
+                       <input type="hidden" name="id_img" value="'.$img_id.'"  />
+                       <input type="hidden" name="id_list" value="'.$id.'"  />  
+                       <input type="submit" id="img_god_submit" name="img_del_submit" value="удалить" />
+                       </form>';
+        return (is_null($img_id))? $form : wp_get_attachment_image($img_id, 'list_gods_img', false, array('class' => 'list-gods-img', 'data-image' => wp_get_attachment_url($img_id))).$form_del;
 
     }
 
@@ -90,6 +97,15 @@ class User_profile_static
                     Profile_user::setImgUrlList($_POST['id_god'], $attachment_id);
                 }else{var_dump('Ошибка.');}
             endif;
+        }
+    }
+
+    public static function img_del()
+    {
+        if(isset($_GET['img_del_submit']) && self::$id_wp_user === self::$user_id)
+        {
+            wp_delete_attachment( $_GET['id_img'], true);
+            Profile_user::del_img_list($_GET['id_list']);
         }
     }
 

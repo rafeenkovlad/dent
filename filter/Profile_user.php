@@ -129,4 +129,10 @@ class Profile_user extends \Db
             ->get();
     }
 
+    //удалить изображение из excel list
+    public static function del_img_list($list_id, $list = Gods::class)
+    {
+        return $list::where('id', '=', $list_id)
+            ->update(['img_url' => NULL]);
+    }
 }

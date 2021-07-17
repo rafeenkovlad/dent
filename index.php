@@ -2,7 +2,7 @@
 
 <?php
 
-
+/*
 require_once 'vendor/autoload.php';
 use Dbdental\db\Connect;
 use FunctionCommand\Functions;
