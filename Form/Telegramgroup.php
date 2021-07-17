@@ -37,18 +37,30 @@ class Telegramgroup
             ->take(20)
             ->get();
         $arr =& $json;
-        
+        $mimes = array(
+            // Image formats
+            'jpg|jpeg|jpe'                 => 'image/jpeg',
+            'gif'                          => 'image/gif',
+            'png'                          => 'image/png',
+            'bmp'                          => 'image/bmp',
+            'tif|tiff'                     => 'image/tiff',
+            'ico'                          => 'image/x-icon'
+        );
+
         foreach ($arr as $text)
         {
 
             $text = json_decode($text->message, true);
             $str = explode("\n",$text['bot']??$text['message']['text']);
+            $file = $text['message']['file'];
+            $filetype = wp_check_filetype(plugins_url('db/bot/file/'.$file), $mimes);
 
             if(!isset($text['bot'])):
                 self::$messages[] = [
                     'from' => $text['message']['from']['first_name'],
                     'date' => $date = date('H:i d.m.y', $text['message']['date']),
-                    'text' => implode("<br />", $str)
+                    'text' => implode("<br />", $str),
+                    'file' => ($filetype['ext'])?'<img class="list-gods-img" data-image='.plugins_url('db/bot/file/'.$file).' src='.plugins_url('db/bot/file/'.$file).'':Null
                     ];
             else:
                 self::$messages[] = [
