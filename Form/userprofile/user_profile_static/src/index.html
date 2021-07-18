@@ -6,20 +6,21 @@
     </div>
     <div class="profile_text">
         <div>
+            <div class="profile_text1">Компания: <?= (self::$profile->name_company !== NULL) ? self::$profile->name_company : self::$profile->full_name ?></div>
+        </div>
+        <div>
             <div class="profile_text1">Контакты: <?= self::$profile->contact ?></div>
         </div>
         <div>
-            <div class="profile_text1">Информация: <?= self::$profile->info ?></div>
+            <div class="profile_text1">Информация: <?= self::$profile->info??self::$profile->about_your ?></div>
         </div>
-        <div>
+       <!-- <div>
             <div class="profile_text1">email: <?= self::$profile->email ?></div>
-        </div>
+        </div> --!>
         <div>
             <div class="profile_text1">Рейтинг: <?= self::$like_sum ?></div>
         </div>
-        <div>
-            <div class="profile_text1">Компания: <?= (self::$profile->name_company !== NULL) ? self::$profile->name_company : self::$profile->worker ?></div>
-        </div>
+
     </div>
 </div>
 

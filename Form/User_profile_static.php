@@ -15,14 +15,18 @@ class User_profile_static
                 //Открытие картинки в полный размер на странице с товарным листом
                 wp_register_style('gods_list_css', plugins_url('db/Form/userprofile/user_profile_static/src/assets_img/css/style.css'));
                 wp_enqueue_style('gods_list_css');
+                wp_register_style('bootstrap_css', '//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css');
+                wp_enqueue_style('bootstrap_css');
                 wp_register_script('gods_list_js', plugins_url('db/Form/userprofile/user_profile_static/src/assets_img/intense.js'));
                 wp_enqueue_script('gods_list_js');
                 //в разработке
                 wp_register_style('userprofile_css', plugins_url('db/Form/userprofile/user_profile_static/src/style.css'));
                 wp_enqueue_style('userprofile_css');
                 wp_register_script('userprofile_js', plugins_url('db/Form/userprofile/user_profile_static/src/script.js'));
+                wp_register_script('min_js', plugins_url('db/Form/js/jquery.min.js'));
                 add_action('wp_footer', function(){
                     wp_enqueue_script('userprofile_js');
+                    wp_enqueue_script('min_js');
                 });
 
 
@@ -62,11 +66,12 @@ class User_profile_static
                 wp_nonce_field('img_god_upload', 'nonce_img_upload').
                 '<input type="submit" id="img_god_submit" name="img_god_submit" value="добавить" />
             </form>': NULL;
-        $form_del = '<form id="img_delete" method="get" action="">
+        $form_del = (self::$id_wp_user == self::$user_id)? '<form id="img_delete" method="get" action="">
                        <input type="hidden" name="id_img" value="'.$img_id.'"  />
-                       <input type="hidden" name="id_list" value="'.$id.'"  />  
+                       <input type="hidden" name="id_list" value="'.$id.'"  /> '
+                       . wp_nonce_field('img_god_del', 'nonce_img_del').' 
                        <input type="submit" id="img_god_submit" name="img_del_submit" value="удалить" />
-                       </form>';
+                       </form>' : NULL;
         return (is_null($img_id))? $form : wp_get_attachment_image($img_id, 'list_gods_img', false, array('class' => 'list-gods-img', 'data-image' => wp_get_attachment_url($img_id))).$form_del;
 
     }
@@ -102,7 +107,7 @@ class User_profile_static
 
     public static function img_del()
     {
-        if(isset($_GET['img_del_submit']) && self::$id_wp_user === self::$user_id)
+        if(isset($_GET['img_del_submit']) && wp_verify_nonce($_GET['nonce_img_del'], 'img_god_del') && self::$id_wp_user === self::$user_id)
         {
             wp_delete_attachment( $_GET['id_img'], true);
             Profile_user::del_img_list($_GET['id_list']);

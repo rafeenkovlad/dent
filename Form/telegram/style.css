@@ -232,6 +232,7 @@ footer .container-inner{
 	max-height: 100%;
 }
 .profile_text{
+	margin-left:5px;
 	width: 65%;
 }
 .profile_text > div{

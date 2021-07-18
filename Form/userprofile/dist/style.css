@@ -74,3 +74,31 @@ a:hover {
     background-repeat: no-repeat;
     background-size: contain;
 }
+
+.input-file input[type=file] {
+    visibility: hidden;
+    width: 1px;
+    height: 1px;
+}
+.input-file .btn {
+    background-color: #ddd;
+    border-color: #ccc;
+    color: #333;
+}
+.input-file .file-selected {
+    font-size: 10px;
+    text-align: left;
+    width: 100%;
+    display: block;
+    margin-top: 5px;
+}
+
+.wrap {
+    display: block;
+}
+
+.valign-middle {
+    display: table-cell;
+    vertical-align: middle;
+
+}

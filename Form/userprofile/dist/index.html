@@ -20,6 +20,10 @@
   </div>
   <div class="profile_text">
       <div>
+          <div class="profile_text1">Компания</div>
+          <div class="profile_text2"><input type="text" id="name_profile" name="name_profile" value="<?= self::$profile->name_company??self::$profile->full_name ?>"></div>
+      </div>
+      <div>
         <div class="profile_text1">Контакты</div>
         <div class="profile_text2"><input type="text" id="contact_profile"  name="contact_profile" value="<?= self::$profile->contact ?>"></div>
       </div>
@@ -27,30 +31,40 @@
         <div class="profile_text1">Информация</div>
         <div class="profile_text2"><textarea id="info_profile" name="info_profile"><?= self::$profile->info??self::$profile->about_your ?></textarea></div>
       </div>
-      <div>
+     <!-- <div>
         <div class="profile_text1">email</div>
         <div class="profile_text2"><?= self::$profile->email ?></div>
-      </div>
+      </div> --!>
       <div>
-        <div class="profile_text1">Лайки</div>
+        <div class="profile_text1">Рейтинг</div>
         <div class="profile_text2"><?= self::$like_sum ?></div>
-      </div>
-      <div>
-        <div class="profile_text1">Компания</div>
-        <div class="profile_text2"><input type="text" id="name_profile" name="name_profile" value="<?= self::$profile->name_company??self::$profile->full_name ?>"></div>
       </div>
   </div>
 </div>
+        <div class="wrap">
+            <div class="valign-middle">
+                <div class="form-group">
+                    <label  for="img_profile" class="sr-only">Изменить лого</label>
+                    <input type="file" id="img_profile" name="img" accept="image/jpeg,image/png,image/gif">
+                </div>
+            </div>
+        </div>
 
   <input type ="hidden" name="post_id" value="<?= self::$profile->post_id ?>">
-  <input type="file" id="img_profile" name="img" accept="image/jpeg,image/png,image/gif">
   <input type="hidden" id="wp_user_id" name="wp_user_id" value="<?= self::$profile->wp_users_id ?>">
   <input type="button" id="update_profile" value="Сохранить изменения">
-
+    </form>
         <br />Для формирования каталога предлагаемых товаров необходиомо скачать файл <a href = "<?= plugins_url('db/csv/list.csv') ?>" >list.csv </a>и заполнить. Для заполнения можно использовать microsoft excel. Важно сохранить файл в том же формате (list.csv).
-</form>
+
     <form method = "POST" action = "" enctype = "multipart/form-data">
-      <input type = "file" name="csv"/>
+        <div class="wrap">
+            <div class="valign-middle">
+                <div class="form-group">
+                    <label  for="csv" class="sr-only">Выбрать</label>
+                    <input type = "file" id="csv" name="csv" accept=".csv"/>
+                </div>
+            </div>
+        </div>
       <input type = "submit" name = "sub" value = "сформировать"/>
     </form>
 
