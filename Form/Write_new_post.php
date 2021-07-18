@@ -24,7 +24,7 @@ class Write_new_post
 
     public static function element_new_post()
     {
-        require_once ('newpost/src/index.html');
+        (get_current_user_id())?require_once ('newpost/src/index.html'):print_r('Необходимо авторизваться.');
     }
 
     private static function editor()

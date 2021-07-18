@@ -272,7 +272,7 @@ footer .container-inner{
 	}
 	.s2 .sidebar-content .position-absolute,
 	.s2 .sidebar-content .position-relative{
-		position: unset !important;
+		/*position: unset !important;*/
 		width: 100%;
 		display: block;
 	}
