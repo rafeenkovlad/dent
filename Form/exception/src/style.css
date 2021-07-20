@@ -15,6 +15,7 @@ html{font-family:sans-serif;-webkit-text-size-adjust:100%;-ms-text-size-adjust:1
 .modal-content {
     /* Bootstrap sets the size of the modal in the modal-dialog class, we need to inherit it */
     width:inherit;
+    max-width: 620px;
     height:inherit;
     /* To center horizontally */
     margin: 0 auto;

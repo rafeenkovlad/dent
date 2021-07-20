@@ -21,7 +21,9 @@ class Search_parts extends \Db
 
     public function require_sn()
     {
+        ob_start();
         require_once ('snsearch/index.html');
+        return ob_get_clean();
     }
 
     private function get_sn()
