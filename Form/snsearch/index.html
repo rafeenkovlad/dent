@@ -1,0 +1,11 @@
+<form class="search-container" action="" method="get">
+    <input type="text" name="sn" id="search-bar" placeholder="найти по серийному номеру">
+    <a id="sn_src" href=""><img class="search-icon" src="<?= plugins_url('db/Form/snsearch/search-icon.png') ?>"></a>
+</form>
+
+<div class="search-container" style ="white-space:pre;"><?= $this->get_sn() ?></div>
+<script type="text/javascript">
+    $('#search-bar').on('input', function() {
+        $("#sn_src").attr("href", '?sn='+$("#search-bar").val());
+    });
+</script>

@@ -19,6 +19,7 @@ use \Filter\newpost\New_post;
 use Form\rait\Rait_short;
 use Route\Wp\TelegramBotOpenUrl;
 use Form\chat\Telegramgroup;
+use Form\Search_parts;
 
 
 
@@ -131,6 +132,11 @@ class Db extends WP_REST_Controller {
         $chat::getTemplate();
     }
 
+    public function search_sn_form()
+    {
+        new Search_parts();
+    }
+
 }
 
 $db = new Db();
@@ -140,6 +146,7 @@ $db->new_post();
 $db->likes_post();
 $db->telegramBotRoute();
 $db->getChatTelegram();
+$db->search_sn_form();
 
 
 ?>

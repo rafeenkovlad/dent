@@ -109,6 +109,7 @@ class ComposerStaticInit0fc72c8767240f560261be6ff92fb5b7
             'Form\\profile\\' => 13,
             'Form\\chat\\' => 10,
             'Form\\alert\\' => 11,
+            'Form\\' => 5,
             'Filter\\profile\\' => 15,
             'Filter\\newpost\\' => 15,
             'Filter\\login\\' => 13,
@@ -130,6 +131,7 @@ class ComposerStaticInit0fc72c8767240f560261be6ff92fb5b7
             'Dbdental\\db\\' => 12,
             'Dbdental\\company\\' => 17,
             'Dbdental\\chat\\' => 14,
+            'Dbdental\\' => 9,
             'Database\\Factories\\' => 19,
         ),
         'C' => 
@@ -325,6 +327,10 @@ class ComposerStaticInit0fc72c8767240f560261be6ff92fb5b7
         array (
             0 => __DIR__ . '/../..' . '/Form',
         ),
+        'Form\\' => 
+        array (
+            0 => __DIR__ . '/../..' . '/Form',
+        ),
         'Filter\\profile\\' => 
         array (
             0 => __DIR__ . '/../..' . '/filter',
@@ -382,6 +388,10 @@ class ComposerStaticInit0fc72c8767240f560261be6ff92fb5b7
             0 => __DIR__ . '/../..' . '/dbdental',
         ),
         'Dbdental\\chat\\' => 
+        array (
+            0 => __DIR__ . '/../..' . '/dbdental',
+        ),
+        'Dbdental\\' => 
         array (
             0 => __DIR__ . '/../..' . '/dbdental',
         ),
@@ -491,6 +501,8 @@ class ComposerStaticInit0fc72c8767240f560261be6ff92fb5b7
         'Carbon\\Traits\\Units' => __DIR__ . '/..' . '/nesbot/carbon/src/Carbon/Traits/Units.php',
         'Carbon\\Traits\\Week' => __DIR__ . '/..' . '/nesbot/carbon/src/Carbon/Traits/Week.php',
         'Carbon\\Translator' => __DIR__ . '/..' . '/nesbot/carbon/src/Carbon/Translator.php',
+        'Composer\\InstalledVersions' => __DIR__ . '/..' . '/composer/InstalledVersions.php',
+        'Dbdental\\Snsearch' => __DIR__ . '/../..' . '/dbdental/Snsearch.php',
         'Dbdental\\chat\\Chat' => __DIR__ . '/../..' . '/dbdental/Chat.php',
         'Dbdental\\company\\CompanyInfo' => __DIR__ . '/../..' . '/dbdental/CompanyInfo.php',
         'Dbdental\\db\\Connect' => __DIR__ . '/../..' . '/dbdental/Connect.php',
@@ -1085,6 +1097,7 @@ class ComposerStaticInit0fc72c8767240f560261be6ff92fb5b7
         'Filter\\login\\Login_create' => __DIR__ . '/../..' . '/filter/Login_create.php',
         'Filter\\newpost\\New_post' => __DIR__ . '/../..' . '/filter/New_post.php',
         'Filter\\profile\\Profile_user' => __DIR__ . '/../..' . '/filter/Profile_user.php',
+        'Form\\Search_parts' => __DIR__ . '/../..' . '/Form/Search_parts.php',
         'Form\\alert\\Alert' => __DIR__ . '/../..' . '/Form/Alert.php',
         'Form\\chat\\Telegramgroup' => __DIR__ . '/../..' . '/Form/Telegramgroup.php',
         'Form\\profile\\User_profile' => __DIR__ . '/../..' . '/Form/User_profile.php',
@@ -2183,7 +2196,6 @@ class ComposerStaticInit0fc72c8767240f560261be6ff92fb5b7
         'UnhandledMatchError' => __DIR__ . '/..' . '/symfony/polyfill-php80/Resources/stubs/UnhandledMatchError.php',
         'ValueError' => __DIR__ . '/..' . '/symfony/polyfill-php80/Resources/stubs/ValueError.php',
         'XdgBaseDir\\Xdg' => __DIR__ . '/..' . '/dnoegel/php-xdg-base-dir/src/Xdg.php',
-        'thumbsmaster\\thumbs\\Thumbs' => __DIR__ . '/..' . '/thumbs-master/Thumbs.php',
         'voku\\helper\\ASCII' => __DIR__ . '/..' . '/voku/portable-ascii/src/voku/helper/ASCII.php',
     );
 

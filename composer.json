@@ -52,7 +52,9 @@
 	    "Form\\rait\\": "Form",
 	    "Route\\Wp\\": "route",
 	    "Form\\chat\\": "Form",
-	    "thumbsmaster\\thumbs\\": "vendor/thumbs-master"	
+	    "thumbsmaster\\thumbs\\": "vendor/thumbs-master",
+	    "Dbdental\\": "dbdental",
+	    "Form\\": "Form"	
 
         },
 	"files": [

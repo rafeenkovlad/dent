@@ -1,7 +1,12 @@
 <?php
 namespace Dbdental;
+if(!file_exists('../vendor/mihanentalpo/fast-fuzzy-search/src/FastFuzzySearch.php')){
+    $filename = "wp-content/plugins/db/vendor/mihanentalpo/fast-fuzzy-search/src/FastFuzzySearch.php";
+}else{
+    $filename = '../vendor/mihanentalpo/fast-fuzzy-search/src/FastFuzzySearch.php';
+}
+require_once ($filename);
 
-require_once ('../vendor/mihanentalpo/fast-fuzzy-search/src/FastFuzzySearch.php');
 use Mihanentalpo\FastFuzzySearch\FastFuzzySearch;
 
 class Snsearch
