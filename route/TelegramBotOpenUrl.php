@@ -2,7 +2,7 @@
 namespace Route\Wp;
 use Form\alert\Alert;
 
-class TelegramBotOpenUrl extends \Db
+class TelegramBotOpenUrl
 {
     public function __construct()
     {

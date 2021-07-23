@@ -193,6 +193,8 @@ input[type="color"]:focus,
 }
 .profile_cont_table #img_god_submit{
 	font-size: 13px;
+	display: inline-block;
+	align-items: center;
 }
 .profile_cont_table table td, 
 .profile_cont_table table th{
@@ -276,11 +278,13 @@ footer .container-inner{
 		width: 100%;
 		display: block;
 	}
+	.sidebar-top {
+		padding: 0px 0px !important;
+	}
 	.tg_rounded_hei{
 		width: 100%;
 		display: block;
 		overflow: unset !important;
-		margin-top: 30px;
 	}
 	form.form_dental label[for="reset"]{
 		float: unset !important;
