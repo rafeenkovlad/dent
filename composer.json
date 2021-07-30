@@ -54,7 +54,8 @@
 	    "Form\\chat\\": "Form",
 	    "thumbsmaster\\thumbs\\": "vendor/thumbs-master",
 	    "Dbdental\\": "dbdental",
-	    "Form\\": "Form"	
+	    "Form\\": "Form",
+	    "Metabox\\": "metabox"	
 
         },
 	"files": [

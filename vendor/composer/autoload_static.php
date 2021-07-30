@@ -85,6 +85,7 @@ class ComposerStaticInit0fc72c8767240f560261be6ff92fb5b7
         array (
             'Myprofile\\write\\' => 16,
             'Mihanentalpo\\FastFuzzySearch\\' => 29,
+            'Metabox\\' => 8,
         ),
         'L' => 
         array (
@@ -263,6 +264,10 @@ class ComposerStaticInit0fc72c8767240f560261be6ff92fb5b7
         array (
             0 => __DIR__ . '/..' . '/mihanentalpo/fast-fuzzy-search/src',
             1 => __DIR__ . '/..' . '/mihanentalpo/fast-fuzzy-search/src',
+        ),
+        'Metabox\\' => 
+        array (
+            0 => __DIR__ . '/../..' . '/metabox',
         ),
         'ListCSV\\' => 
         array (
@@ -1519,6 +1524,7 @@ class ComposerStaticInit0fc72c8767240f560261be6ff92fb5b7
         'Lcobucci\\JWT\\Token' => __DIR__ . '/..' . '/lcobucci/jwt/src/Token.php',
         'Lcobucci\\JWT\\ValidationData' => __DIR__ . '/..' . '/lcobucci/jwt/src/ValidationData.php',
         'ListCSV\\GodsList' => __DIR__ . '/../..' . '/csv/GodsList.php',
+        'Metabox\\RmMetaBox' => __DIR__ . '/../..' . '/metabox/RmMetaBox.php',
         'Mihanentalpo\\FastFuzzySearch\\FastFuzzySearch' => __DIR__ . '/..' . '/mihanentalpo/fast-fuzzy-search/src/FastFuzzySearch.php',
         'Myprofile\\write\\Write_profile' => __DIR__ . '/../..' . '/Form/Write_profile.php',
         'Normalizer' => __DIR__ . '/..' . '/symfony/polyfill-intl-normalizer/Resources/stubs/Normalizer.php',
@@ -1908,6 +1914,8 @@ class ComposerStaticInit0fc72c8767240f560261be6ff92fb5b7
         'Psy\\VersionUpdater\\GitHubChecker' => __DIR__ . '/..' . '/psy/psysh/src/VersionUpdater/GitHubChecker.php',
         'Psy\\VersionUpdater\\IntervalChecker' => __DIR__ . '/..' . '/psy/psysh/src/VersionUpdater/IntervalChecker.php',
         'Psy\\VersionUpdater\\NoopChecker' => __DIR__ . '/..' . '/psy/psysh/src/VersionUpdater/NoopChecker.php',
+        'Route\\Wp\\DelImgList' => __DIR__ . '/../..' . '/route/DelImgList.php',
+        'Route\\Wp\\SetImgList' => __DIR__ . '/../..' . '/route/SetImgList.php',
         'Route\\Wp\\TelegramBotOpenUrl' => __DIR__ . '/../..' . '/route/TelegramBotOpenUrl.php',
         'Route\\rest\\Login' => __DIR__ . '/../..' . '/route/Login.php',
         'Stringable' => __DIR__ . '/..' . '/symfony/polyfill-php80/Resources/stubs/Stringable.php',

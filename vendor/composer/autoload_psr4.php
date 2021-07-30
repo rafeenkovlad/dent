@@ -35,6 +35,7 @@ return array(
     'Outpost\\' => array($baseDir . '/'),
     'Myprofile\\write\\' => array($baseDir . '/Form'),
     'Mihanentalpo\\FastFuzzySearch\\' => array($vendorDir . '/mihanentalpo/fast-fuzzy-search/src', $vendorDir . '/mihanentalpo/fast-fuzzy-search/src'),
+    'Metabox\\' => array($baseDir . '/metabox'),
     'ListCSV\\' => array($baseDir . '/csv'),
     'Lcobucci\\JWT\\' => array($vendorDir . '/lcobucci/jwt/src', $vendorDir . '/lcobucci/jwt/src'),
     'Illuminate\\Support\\' => array($vendorDir . '/illuminate/collections', $vendorDir . '/illuminate/macroable', $vendorDir . '/illuminate/support'),

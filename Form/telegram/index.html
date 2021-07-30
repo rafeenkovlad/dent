@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html lang="en" >
 <head>
-  <meta charset="UTF-8">
-  <title>dentaline</title>
-  <!-- Bootstrap CSS -->
+	<meta charset="UTF-8">
+	<title>dentaline</title>
+	<!-- Bootstrap CSS -->
 
 
 	<!-- Font Awesome CSS -->
@@ -13,58 +13,58 @@
 <body>
 <!-- partial:index.partial.html -->
 <div class="jumbotron m-0 p-0 bg-transparent">
-		<div class="row m-0 p-0 position-relative">
-		  <div class="col-12 p-0 m-0 position-absolute" style="right: 0px;">
+	<div class="row m-0 p-0 position-relative">
+		<div class="col-12 p-0 m-0 position-absolute" style="right: 0px;">
 			<div class="card border-0 rounded tg_rounded_hei" style="box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.10), 0 6px 10px 0 rgba(0, 0, 0, 0.01); overflow: hidden; height: 100vh;">
 
-			  <div class="card-header p-1 bg-light border border-top-0 border-left-0 border-right-0" style="color: rgba(96, 125, 139,1.0);">
-				
-				<img class="rounded float-left" style="width: 50px; height: 50px;" src="<?= plugins_url('db/Form/telegram/dentaline.png') ?>" />
-				
-				  <h6 class="float-left" style="margin: 0px; margin-left: 10px;"> <a href="https://t.me/joinchat/z6GtvYF2ITE1YzEy">@Dentaline</a> </br><i class="fa fa-check text-primary" title="@Dentaline" aria-hidden="true"></i><small> группа телеграм </small></h6>
-					
-				  <div class="dropdown show">
+				<div class="card-header p-1 bg-light border border-top-0 border-left-0 border-right-0" style="color: rgba(96, 125, 139,1.0);">
 
-					  <a id="dropdownMenuLink" data-toggle="dropdown" class="btn btn-sm float-right text-secondary" role="button"><h5><i class="fa fa-ellipsis-h" title="Подробнее" aria-hidden="true"></i>&nbsp;</h5></a>
 
-					<div class="dropdown-menu dropdown-menu-right border p-0" aria-labelledby="dropdownMenuLink">
-						
-						<a class="dropdown-item p-2 text-secondary" href="<?= get_page_link( 659 ) ?>"> <i class="fa fa-search m-1" aria-hidden="true"></i> Поиск по SN </a>
-						<hr class="my-1"></hr>
-						<a class="dropdown-item p-2 text-secondary" href="#"> <i class="fa fa-spinner m-1" aria-hidden="true"></i> Обновить </a>
 
-					</div>
-				  </div>
-					
-			  </div>
-			
-				<div class="card bg-sohbet border-0 m-0 p-0 tg_rounded_hei1"  id="tg_rounded_hei" style="height: 100vh;">
-			  <div id="sohbet" class="card border-0 m-0 p-0 position-relative bg-transparent tg_rounded_hei1" style="overflow-y: auto; height: 100vh;">
-				  <?php foreach(self::$messages as $build): ?>
-				  <?php if($build['float'] == 'right'):?>
-				<div class="balon1 p-2 m-0 position-relative" data-is="<?= $build['from'] ?> - <?= $build['date'] ?>">
-					<div class="message1 message1_bot">
-						<a><?= $build['text'] ?></a>
+					<h6 class="float-left" style="margin: 0px; margin-left: 10px;"> <a href="https://t.me/joinchat/z6GtvYF2ITE1YzEy">@Dentaline</a> </br><small> группа телеграм </small></h6>
+
+					<div class="dropdown show">
+
+						<a id="dropdownMenuLink" data-toggle="dropdown" class="btn btn-sm float-right text-secondary" role="button"><h5><i class="fa fa-ellipsis-h" title="Подробнее" aria-hidden="true"></i>&nbsp;</h5></a>
+
+						<div class="dropdown-menu dropdown-menu-right border p-0" aria-labelledby="dropdownMenuLink">
+
+							<a class="dropdown-item p-2 text-secondary" href="<?= get_page_link( 659 ) ?>"> <i class="fa fa-search m-1" aria-hidden="true"></i> Поиск по SN </a>
+							<hr class="my-1"></hr>
+							<a class="dropdown-item p-2 text-secondary" href="#"> <i class="fa fa-spinner m-1" aria-hidden="true"></i> Обновить </a>
+
+						</div>
 					</div>
 
 				</div>
-				  <?php else: ?>
-				  <div class="balon2 p-2 m-0 position-relative" data-is="<?= $build['from'] ?> - <?= $build['date'] ?>">
 
-					<div class="message2">
-					  	<a class="sohbet2"><?= $build['file'] ?> <?= $build['text'] ?></a>
+				<div class="card bg-sohbet border-0 m-0 p-0 tg_rounded_hei1"  id="tg_rounded_hei" style="height: 100vh;">
+					<div id="sohbet" class="card border-0 m-0 p-0 position-relative bg-transparent tg_rounded_hei1" style="overflow-y: auto; height: 100vh;">
+						<?php foreach(self::$messages as $build): ?>
+						<?php if($build['float'] == 'right'):?>
+						<div class="balon1 p-2 m-0 position-relative" data-is="<?= $build['from'] ?> - <?= $build['date'] ?>">
+							<div class="message1 message1_bot">
+								<a><?= $build['text'] ?></a>
+							</div>
+
+						</div>
+						<?php else: ?>
+						<div class="balon2 p-2 m-0 position-relative" data-is="<?= $build['from'] ?> - <?= $build['date'] ?>">
+
+							<div class="message2">
+								<a class="sohbet2"><?= $build['file'] ?> <?= $build['text'] ?></a>
+							</div>
+
+						</div>
+						<?php endif; ?>
+						<?php endforeach; ?>
+
+
+
 					</div>
+				</div>
 
-				  </div>
-				  <?php endif; ?>
-				  <?php endforeach; ?>
-
-
-
-			  </div>
-			  </div>
-
-			  <div class="w-100 card-footer p-0 bg-light border border-bottom-0 border-left-0 border-right-0">
+				<div class="w-100 card-footer p-0 bg-light border border-bottom-0 border-left-0 border-right-0">
 
 					<!--<form class="m-0 p-0" action="" method="POST" autocomplete="off">
 
@@ -83,54 +83,51 @@
 
 				</form> -->
 
-			  </div>
+				</div>
 
 			</div>
-		  </div>
-		  
 		</div>
-	  </div>
 
-	<script>
-		$(document).ready(function(){
-			if($('.form_dental').length == 0){
-				var clickButMenu = '';
-				function side_res(){
-					if($(window).width() <= 1200){
-						var heigb = $('.main-inner.group')[0].offsetHeight - $('.sidebar-toggle')[0].offsetHeight - $('.sidebar-top')[1].offsetHeight - 70;
-						if($(window).width() <= 480){
-							heigb = 1000;
-							$('.tg_rounded_hei').height(heigb - $('.card-footer')[0].offsetHeight);
-							$('.tg_rounded_hei1').height(heigb - $('.card-footer')[0].offsetHeight - $('.card-header')[0].offsetHeight);
-							$('.sidebar-content').height(heigb);
-						}
-						else{
-							$('.tg_rounded_hei').height(heigb - $('.card-footer')[0].offsetHeight);
-							$('.tg_rounded_hei1').height(heigb - $('.card-footer')[0].offsetHeight - $('.card-header')[0].offsetHeight);
-							$('.sidebar-content').height($('.main-inner.group')[0].offsetHeight - $('.sidebar-toggle')[0].offsetHeight);
-						}
+	</div>
+</div>
+
+<script>
+	$(document).ready(function(){
+		if($('.form_dental').length == 0){
+			var clickButMenu = '';
+			function side_res(){
+				if($(window).width() <= 1200){
+					var heigb = $('.main-inner.group')[0].offsetHeight - $('.sidebar-toggle')[0].offsetHeight - $('.sidebar-top')[1].offsetHeight - 70;
+					if($(window).width() <= 480){
+						heigb = 1000;
+						$('.tg_rounded_hei').height(heigb - $('.card-footer')[0].offsetHeight);
+						$('.tg_rounded_hei1').height(heigb - $('.card-footer')[0].offsetHeight - $('.card-header')[0].offsetHeight);
+						$('.sidebar-content').height(heigb);
 					}
 					else{
+						$('.tg_rounded_hei').height(heigb - $('.card-footer')[0].offsetHeight);
+						$('.tg_rounded_hei1').height(heigb - $('.card-footer')[0].offsetHeight - $('.card-header')[0].offsetHeight);
+						$('.sidebar-content').height($('.main-inner.group')[0].offsetHeight - $('.sidebar-toggle')[0].offsetHeight);
+					}
+				}
+				else{
 					var heigb = $('.main-inner.group')[0].offsetHeight - $('.sidebar-top')[1].offsetHeight;
 					$('.tg_rounded_hei').height(heigb);
 					$('.tg_rounded_hei1').height(heigb - $('.card-footer')[0].offsetHeight - 60);
-					}
 				}
-				side_res();
-				$(window).resize(function(){
-					side_res();
-				});
 			}
-		});
-	</script>
+			side_res();
+			$(window).resize(function(){
+				side_res();
+			});
+		}
+	});
+</script>
 
 <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"  crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/js/bootstrap.min.js"  crossorigin="anonymous"></script>
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"  crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/js/bootstrap.min.js"  crossorigin="anonymous"></script>
 <!-- partial -->
-  <script src='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-beta/js/bootstrap.min.js'></script>
-<script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>
 </body>
 </html>

@@ -20,8 +20,7 @@ use Form\rait\Rait_short;
 use Route\Wp\TelegramBotOpenUrl;
 use Form\chat\Telegramgroup;
 use Form\Search_parts;
-
-
+use Metabox\RmMetaBox;
 
 class Db extends WP_REST_Controller {
 
@@ -137,6 +136,11 @@ class Db extends WP_REST_Controller {
         new Search_parts();
     }
 
+    public function disable_metabox($metabox = RmMetaBox::class)
+    {
+        $metabox::hueman_post_options_remoove();
+    }
+
 }
 
 $db = new Db();
@@ -147,6 +151,8 @@ $db->likes_post();
 $db->telegramBotRoute();
 $db->getChatTelegram();
 $db->search_sn_form();
+$db->disable_metabox();
+
 
 
 ?>
