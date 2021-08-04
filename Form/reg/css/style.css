@@ -20,23 +20,23 @@ form.form_dental #wrapper, label, #arrow, button span { transition: all .5s cubi
 form.form_dental #wrapper { overflow: hidden; }
 
 form.form_dental #signin:checked ~ #wrapper { height: 110px; }
-form.form_dental #signin:checked ~ #wrapper #arrow { left: 32px; }
+form.form_dental #signin:checked ~ #wrapper #arrow { left: 385px; }
 form.form_dental #signin:checked ~ button span { transform: translate3d(0,-85px,0); }
-form.form_dental #signin:checked ~ .reg_dental_sub_bg { height: 190px; }
+form.form_dental #signin:checked ~ .reg_dental_sub_bg { height: 180px; }
 
 form.form_dental #signup:checked ~ #wrapper { height: 160px; }
-form.form_dental #signup:checked ~ #wrapper #arrow { left: 137px; }
+form.form_dental #signup:checked ~ #wrapper #arrow { left: 45px; }
 form.form_dental #signup:checked ~ button span { transform: translate3d(0,-155px,0); }
-form.form_dental #signup:checked ~ .reg_dental_sub_bg { height: 240px; }
+form.form_dental #signup:checked ~ .reg_dental_sub_bg { height: 230px; }
 
 form.form_dental #reset:checked ~ #wrapper { height: 60px; }
-form.form_dental #reset:checked ~ #wrapper #arrow { left: 350px; }
+form.form_dental #reset:checked ~ #wrapper #arrow { left: 150px; }
 form.form_dental #reset:checked ~ button span { transform: translate3d(0,-13px,0); }
-form.form_dental #reset:checked ~ .reg_dental_sub_bg { height: 140px; }
+form.form_dental #reset:checked ~ .reg_dental_sub_bg { height: 130px; }
 
 form.form_dental {
   width: 450px;
-  margin: -185px -250px;
+  margin: -135px -250px;
   position: absolute;
   left: 40%;
   top: 70px;
@@ -55,23 +55,23 @@ form.form_dental {
   min-width: unset !important;
 }
 .reg_dental_sub_inp{
-  width: 400px !important;
+  width: 410px !important;
   margin-left: 0;
   padding: 22px 10px 0 10px;
 }
 .reg_dental_sub_but{
   position: relative;
-  width: 225px !important;
-  height: 45px !important;
-  margin-left: 150px;
+  width: 185px !important;
+  height: 40px !important;
+  margin-left: 200px;
   margin-top: 12px;
-  font-size: 24px;
+  font-size: 22px;
 }
 .reg_dental_sub_bg{
   position: absolute;
-  top: 54px;
+  top: 32px;
   left: 0;
-  width: 89%;
+  width: 92%;
   bottom: 0;
   z-index: -1;
   background-color: #f2f2f2;
@@ -89,18 +89,18 @@ form.form_dental input[type=radio] { display: none; }
 form.form_dental label {
   cursor: pointer;
   display: inline-block;
-  font-size: 16px;
-  font-weight: 100;
+  font-size: 12px;
+  font-weight: 600;
   opacity: .5;
-  margin-bottom: 30px;
+  margin-bottom: 5px;
   text-transform: uppercase;
 }
 form.form_dental label:hover {
   transition: all .3s cubic-bezier(.6,0,.4,1);
   opacity: 1;
 }
-form.form_dental label[for="signin"] { margin-right: 20px; }
-form.form_dental label[for="reset"] { float: right; }
+form.form_dental label[for="signin"] { float:right; }
+form.form_dental label[for="reset"] { padding-left:10px; }
 form.form_dental input[type=radio]:checked + label { opacity: 1; }
 
 form.form_dental input[type=text],
@@ -108,9 +108,9 @@ form.form_dental input[type=password] {
   background: #fff;
   border: none;
   border-radius: 8px;
-  font-size: 22px;
+  font-size: 18px;
   font-family: 'Raleway', sans-serif;
-  height: 40px;
+  height: 35px;
   width: 94%;
   margin-left: 3%;
   margin-right: 3%;
@@ -126,10 +126,10 @@ form.form_dental button {
   color: #fff;
   cursor: pointer;
   font-family: 'Raleway', sans-serif;
-  font-size: 27px;
+  font-size: 20px;
   height: 72px;
   width: 100%;
-  margin-bottom: 10px;
+  margin-bottom: 2px;
   overflow: hidden;
   transition: all .3s cubic-bezier(.6,0,.4,1);
 }
@@ -168,8 +168,4 @@ form.form_dental #hint {
   form.form_dental #signup:checked ~ #wrapper { height: 160px !important; }
 
   form.form_dental #reset:checked ~ #wrapper { height: 50px !important; }
-}
-
-.sidebar-top {
-  padding: 0px 0px !important;
 }

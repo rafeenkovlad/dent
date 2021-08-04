@@ -55,7 +55,8 @@
 	    "thumbsmaster\\thumbs\\": "vendor/thumbs-master",
 	    "Dbdental\\": "dbdental",
 	    "Form\\": "Form",
-	    "Metabox\\": "metabox"	
+	    "Metabox\\": "metabox",
+	    "Category\\": "category"	
 
         },
 	"files": [

@@ -89,6 +89,7 @@ return array(
     'Carbon\\Traits\\Units' => $vendorDir . '/nesbot/carbon/src/Carbon/Traits/Units.php',
     'Carbon\\Traits\\Week' => $vendorDir . '/nesbot/carbon/src/Carbon/Traits/Week.php',
     'Carbon\\Translator' => $vendorDir . '/nesbot/carbon/src/Carbon/Translator.php',
+    'Category\\Category' => $baseDir . '/category/Category.php',
     'Composer\\InstalledVersions' => $vendorDir . '/composer/InstalledVersions.php',
     'Dbdental\\Snsearch' => $baseDir . '/dbdental/Snsearch.php',
     'Dbdental\\chat\\Chat' => $baseDir . '/dbdental/Chat.php',

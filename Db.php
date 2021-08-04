@@ -19,8 +19,9 @@ use \Filter\newpost\New_post;
 use Form\rait\Rait_short;
 use Route\Wp\TelegramBotOpenUrl;
 use Form\chat\Telegramgroup;
-use Form\Search_parts;
+use Form\{Search_parts, Custom_menu};
 use Metabox\RmMetaBox;
+use Category\Category;
 
 class Db extends WP_REST_Controller {
 
@@ -33,8 +34,16 @@ class Db extends WP_REST_Controller {
     protected $newpost;
     public $likes;
     public $telegramUrl;
+    protected static $logined, $errors;
 
     public function __construct(){
+
+        register_activation_hook( __FILE__, [&$this,'dental_plugin_activate']);
+
+        //add_filter( 'posts_where', [&$this, 'true_hide_attachments_from_another_author'] );
+
+        self::$errors = new WP_Error();
+
         //Eloquent connect dental DB
         if(empty($this->ORM))
         {
@@ -42,10 +51,13 @@ class Db extends WP_REST_Controller {
         }
         return $this->ORM;
 
-        register_activation_hook( __FILE__, [&$this,'dental_plugin_activate']);
 
-        add_filter( 'posts_where', [&$this, 'true_hide_attachments_from_another_author'] );
 
+    }
+
+    protected static function errors($code, $message)
+    {
+        self::$errors->add($code, $message);
     }
 
 
@@ -74,7 +86,8 @@ class Db extends WP_REST_Controller {
 
     protected static function getreg()
     {
-       return Regform::get_reg_form();
+        self::$logined = is_user_logged_in();
+        return (!self::$logined)? Regform::get_reg_form() : self::errors('logined_dental', 'Уже авторизован');
     }
 
     protected static function myprofileWrite() // login_create.php
@@ -86,7 +99,7 @@ class Db extends WP_REST_Controller {
     {
         $this->login = new Login_create();
         $this->login->action_reg();
-        (!is_user_logged_in())? self::getreg(): 'Личный кабинет';
+        (!$this->logined)? self::getreg(): self::errors('profile_dent', 'не показываем Личный кабинет');
     }
 
     protected static function resetUserPassGet($login, $user = Wp_user::class)
@@ -141,6 +154,16 @@ class Db extends WP_REST_Controller {
         $metabox::hueman_post_options_remoove();
     }
 
+    public function category_right ($category = Category::class)
+    {
+        $category::clouse_category_on_new_post();
+    }
+
+    public function get_menu($menu = Custom_menu::class)
+    {
+        $menu::connect_menu();
+    }
+
 }
 
 $db = new Db();
@@ -152,6 +175,8 @@ $db->telegramBotRoute();
 $db->getChatTelegram();
 $db->search_sn_form();
 $db->disable_metabox();
+$db->category_right();
+$db->get_menu();
 
 
 

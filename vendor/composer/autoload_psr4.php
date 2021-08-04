@@ -70,6 +70,7 @@ return array(
     'Dbdental\\' => array($baseDir . '/dbdental'),
     'Database\\Factories\\' => array($baseDir . '/factories'),
     'Coderun\\ContentCabinet\\' => array($baseDir . '/route/key'),
+    'Category\\' => array($baseDir . '/category'),
     'Carbon\\' => array($vendorDir . '/nesbot/carbon/src/Carbon'),
     'Author\\rait\\' => array($baseDir . '/'),
     'App\\' => array($baseDir . '/app'),
