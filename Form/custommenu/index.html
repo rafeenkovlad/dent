@@ -1,27 +1,25 @@
 <!DOCTYPE html>
-<html lang="ru" >
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
 
+
+</head>
 <body>
 <!-- partial:index.partial.html -->
-<!-- Navigation -->
-<div class="b-nav">
-  <?php foreach( wp_get_nav_menu_items('menu') as $menu): ?>
-  <li><a class="b-link" href="<?= $menu->url ?>" ><?= $menu->title ?></a></li>
-  <?php endforeach; ?>
+<header>
+  <button class="hamburger">&#9776;</button>
+  <button class="cross">&#735;</button>
+</header>
+
+<div class="menu">
+  <ul>
+    <?php foreach( wp_get_nav_menu_items('menu') as $menu): ?>
+    <a href="<?= $menu->url ?>"><li><?= $menu->title ?></li></a>
+    <?php endforeach; ?>
+  </ul>
 </div>
-
-<!-- Burger-Icon -->
-<div class="b-container">
-  <div class="b-menu">
-    <div class="b-bun b-bun--top"></div>
-    <div class="b-bun b-bun--mid"></div>
-    <div class="b-bun b-bun--bottom"></div>
-  </div>
-
-  <!-- Burger-Brand -->
- <!-- <a href="#" class="b-brand">Меню</a> -->
-</div>
-
+<!-- partial -->
 
 </body>
 </html>

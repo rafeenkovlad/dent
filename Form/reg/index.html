@@ -18,9 +18,9 @@
     <path fill-rule="evenodd" d="M8 1a7 7 0 1 0 0 14A7 7 0 0 0 8 1zM0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8z"/>
   </svg> Войти</label>
   <input id="signup" name="action" type="radio" value="signup">
-  <label for="signup" style="display:none" class="form_auth_head">Регистрация</label>
+  <label for="signup" class="form_auth_head">Регистрация</label>
   <input id="reset" name="action" type="radio" value="reset">
-  <label for="reset" style="display:none" class="form_auth_head">Сбросить пароль</label>
+  <label for="reset" class="form_auth_head">Сбросить пароль</label>
 
   <div class="reg_dental_sub_bg"></div>
   <div id="wrapper" class="reg_dental_sub_inp">
@@ -90,8 +90,7 @@
       $("#pass").show();
       $("#repass").val('');
       $("#repass").hide();
-      $("label[for='signup']").css("display", "").css("font-size", "12px");
-      $("label[for='reset']").css("display", "").css("font-size", "12px");
+
     });
     $("#signup").on("click", function(){
       $("#email").val($("#email").val());
