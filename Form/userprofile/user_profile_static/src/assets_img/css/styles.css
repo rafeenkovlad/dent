@@ -7,48 +7,7 @@
 /*********************************************
  *
  *********************************************/
-* {
-  -webkit-font-smoothing: antialiased;
-  -moz-box-sizing: border-box;
-  box-sizing: border-box; }
 
-html, body {
-  font-family: "Ubuntu Mono", monospace;
-  margin: 0px;
-  height: 100%;
-  width: 100%; }
-
-body {
-  padding: 20px;
-  text-align: center;
-  min-width: 700px; }
-
-.logo {
-  width: 55px;
-  height: 55px;
-  background: #222222;
-  color: #fff;
-  text-align: center;
-  line-height: 56px;
-  border-radius: 100%;
-  font-size: 27px;
-  letter-spacing: -7px;
-  text-indent: -6px;
-  margin: auto;
-  margin-bottom: 20px;
-  margin-top: 20px; }
-
-header h1, footer h1 {
-  font-weight: normal;
-  width: 604px;
-  background: #222222;
-  color: #fff;
-  font-size: 18px;
-  height: 55px;
-  line-height: 55px;
-  margin: auto;
-  margin-top: 0px;
-  margin-bottom: 20px; }
 
 .demos {
   text-align: center;

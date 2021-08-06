@@ -14,7 +14,7 @@ class User_profile_static
     {
         add_action('wp_enqueue_scripts', function(){
                 //Открытие картинки в полный размер на странице с товарным листом
-                wp_register_style('gods_list_css', plugins_url('db/Form/userprofile/user_profile_static/src/assets_img/css/style.css'));
+                wp_register_style('gods_list_css', plugins_url('db/Form/userprofile/user_profile_static/src/assets_img/css/styles.css'));
                 wp_enqueue_style('gods_list_css');
                 wp_register_style('bootstrap_css', '//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css');
                 wp_enqueue_style('bootstrap_css');

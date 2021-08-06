@@ -137,11 +137,12 @@ class Login_create extends \Db{
 
                'login' => $login = function($userObj)
                {
-                   $userObj->user_pass = md5(passGenerated());
-
+                   $newPass = passGenerated();
+                   $userObj->user_pass = md5($newPass);
                    $userObj->save();
-                   Alert::doactionAlert("Новый пароль отправлен на вашу почту {$userObj->user_email}.", 'Успешно:');
-                   echo ('здесь должна быть отправка на email');
+                   Alert::doactionAlert("Новый пароль отправлен на вашу почту {$userObj->user_email}.". "\r\n"."Если сообщение не пришло, проверьте спам.", 'Успешно:');
+                   $headers = 'From: Reset Password <help@dentaline.info>' . "\r\n";
+                   wp_mail($userObj->user_email, 'dentaline.info', "Вы запросили сброс пароля, \r\nваш новый пароль: ".$newPass, $headers);
                },
 
                'isEmpty' => (empty($userObj->ID))? Alert::doactionAlert('Такого пользователя не существует!', 'Ошибка:') : $login($userObj),

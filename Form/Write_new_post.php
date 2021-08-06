@@ -10,8 +10,6 @@ class Write_new_post
             //Открытие картинки в полный размер на странице с товарным листом
             wp_register_style('newpost_css', plugins_url('db/Form/newpost/src/style.css'));
             wp_enqueue_style('newpost_css');
-            wp_register_script('header_js', plugins_url('db/Form/newpost/src/header_script.js'));
-            wp_enqueue_script('header_js');
 
             wp_register_script('footer_js', plugins_url('db/Form/newpost/src/footer_script.js'));
             add_action('wp_footer', function(){
