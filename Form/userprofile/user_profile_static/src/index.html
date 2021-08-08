@@ -47,7 +47,7 @@
                 <td class="profile_click_sn"><?= $object->sirial_number ?></td>
                 <td><?= $object->made_in_company ?></td>
                 <td><?= $object->price ?></td>
-                <td><?= $object->litle_info ?></td>
+                <td><div class="read-more js-read-more" data-rm-words="10"><?= $object->litle_info ?></div></td>
                 <td><?= (self::$profile->name_company !== NULL) ? self::$profile->name_company : self::$profile->full_name ?></td>
                 <td><?= self::imgUrl($object->img_url,$object->id)?></td>
             </tr>
