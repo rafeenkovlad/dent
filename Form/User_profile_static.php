@@ -23,14 +23,15 @@ class User_profile_static
                 //в разработке
                 wp_register_style('userprofile_css', plugins_url('db/Form/userprofile/user_profile_static/src/style.css'));
                 wp_enqueue_style('userprofile_css');
-                wp_register_script('userprofile_js', plugins_url('db/Form/userprofile/user_profile_static/src/script.js'));
-                wp_enqueue_script('userprofile_js');
+                wp_register_script('userprofile_input_js', plugins_url('db/Form/userprofile/user_profile_static/src/script.js'));
+
 
                 wp_register_script('readmore_js', plugins_url('db/Form/userprofile/user_profile_static/src/readmore.js'));
                 wp_register_script('min_js', plugins_url('db/Form/js/jquery.min.js'));
                 add_action('wp_footer', function(){
 
                     wp_enqueue_script('min_js');
+                    wp_enqueue_script('userprofile_input_js');
                     wp_enqueue_script('readmore_js');
                 });
 

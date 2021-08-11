@@ -20,13 +20,13 @@ class User_profile
             if(is_page(149)){
                 wp_register_style('userprofile_css', plugins_url('db/Form/userprofile/dist/style.css'));
                 wp_enqueue_style('userprofile_css');
-                wp_register_script('userprofile_js', plugins_url('db/Form/userprofile/dist/script.js'));
-                wp_register_script('userprofile_min_js', plugins_url('db/Form/userprofile/dist/jquery.min.js'));
+                wp_register_script('userprofile_min_js', plugins_url('db/Form/js/jquery.min.js'));
+                wp_register_script('userprofile_input_js', plugins_url('db/Form/userprofile/dist/script.js'));
                 wp_register_script('ajax_profile_update', plugins_url('db/Form/userprofile/dist/update.js'));
                 wp_localize_script('ajax_profile_update', 'ajaxUpdateProfile', ['url' => get_site_url().'/wp-json/profile/v1/set']);
                 add_action('wp_footer', function(){
-                    wp_enqueue_script('userprofile_js');
                     wp_enqueue_script('userprofile_min_js');
+                    wp_enqueue_script('userprofile_input_js');
                     wp_enqueue_script('ajax_profile_update');
                 });
 
