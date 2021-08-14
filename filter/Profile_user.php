@@ -92,10 +92,13 @@ class Profile_user extends \Db
         return $profile;
     }
 
+    public static $page;
     public static function getUserListGods($id, $list = Gods::class)
     {
-
-        return $list::where('company_id', $id)->get();
+        $list::where('company_id', $id)
+        ->chunk(50, function($lists){
+            self::$page[] = $lists;
+        });
     }
 
     //Отправка csv-list

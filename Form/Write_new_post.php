@@ -11,7 +11,7 @@ class Write_new_post
             wp_register_style('newpost_css', plugins_url('db/Form/newpost/src/style.css'));
             wp_enqueue_style('newpost_css');
 
-            wp_register_script('footer_js', plugins_url('db/Form/newpost/src/footer_script.js'));
+            wp_register_script('footer_js', plugins_url('db/Form/newpost/src/footer-script.js'));
             add_action('wp_footer', function(){
                 wp_enqueue_script('footer_js');
             });

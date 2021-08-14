@@ -48,3 +48,28 @@
     display: inline-block;
     margin-left: 0;
 }
+.paginate-page{
+text-align: center;
+}
+ul.pagination{
+
+}
+.pagination li{
+    display: inline-block;
+    cursor: pointer;
+    border: 1px solid silver;
+    padding: 5px 8px;
+    margin: 5px 1px;
+    min-width:20px;
+    text-align: center;
+}
+
+.active-page{
+    cursor: default !important;
+    background: #c0c0c0;
+}
+
+.page-disable{
+    cursor: default !important;
+    background-color: #f1f1f1;
+}

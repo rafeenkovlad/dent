@@ -38,23 +38,11 @@
             <th>изображение</th>
         </tr>
     </thead>
-    <tbody>
-        
-<?php foreach (self::$list as $object): ?>
-            <tr>
-                <td><?= $object->id ?></td>
-                <td class="profile_click_chat"><?= $object->name ?></td>
-                <td class="profile_click_sn"><?= $object->sirial_number ?></td>
-                <td><?= $object->made_in_company ?></td>
-                <td><?= $object->price ?></td>
-                <td><div class="read-more js-read-more" data-rm-words="10"><?= $object->litle_info ?></div></td>
-                <td><?= (self::$profile->name_company !== NULL) ? self::$profile->name_company : self::$profile->full_name ?></td>
-                <td><?= self::imgUrl($object->img_url,$object->id)?></td>
-            </tr>
-<?php endforeach; ?>
-
-</tbody>
+    <tbody class="user-list" id="<?= self::$id_wp_user ?>">
+    <?php self::response_list(); ?>
+    </tbody>
 </table>
+    <div id="paginate-page" count-page="<?= self::$count_page ?>" />
 </div>
 <script>
     $(document).ready(function(){
