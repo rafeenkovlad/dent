@@ -13,6 +13,7 @@ class User_profile_static
 
     public static function user_profile()
     {
+
         add_action('wp_enqueue_scripts', function(){
                 //Открытие картинки в полный размер на странице с товарным листом
                 wp_register_style('gods_list_css', plugins_url('db/Form/userprofile/user_profile_static/src/assets_img/css/styles.css'));
@@ -35,10 +36,10 @@ class User_profile_static
                     wp_enqueue_script('userprofile_input_js');
                     wp_enqueue_script('readmore_js');
                     wp_enqueue_script('paginate_js');
-                    wp_localize_script('paginate_js', 'selfUserId', self::$user_id);
+                    /*wp_localize_script('paginate_js', 'selfUserId', self::$user_id);
                     wp_localize_script('paginate_js', 'selfIdPost', self::$id_post);
                     wp_localize_script('paginate_js', 'apiUrl', get_rest_url(0,'/dental/v1/get-list-items'));
-                    wp_localize_script('paginate_js', 'scriptUrl', plugins_url('db/Form/'));
+                    wp_localize_script('paginate_js', 'scriptUrl', plugins_url('db/Form/'));*/
 
                 });
 
@@ -50,13 +51,14 @@ class User_profile_static
         do_action('register_route_set_img');
         add_action('register_route_del_img', [DelImgList::class, 'register_route']);
         do_action('register_route_del_img');
-        add_action('register_route_list_items', function(){
+
+        /*add_action('register_route_list_items', function(){
             if(empty(self::$listItems)){
                 self::$listItems = new Listitems();
             }
 
         });
-        do_action('register_route_list_items');
+        do_action('register_route_list_items');*/
 
     }
 
@@ -71,9 +73,11 @@ class User_profile_static
         self::$count_page = sizeof(self::$list);
         self::$user_id = wp_get_current_user()->ID;
         self::$like_sum = Profile_user::like_sum_author(self::$id_wp_user);
-        self::$page = self::$list[$_GET['page']??0];
+        $number_arr = (!is_null($_GET['pages']))?$_GET['pages'] -1: 0;
+        self::$page = self::$list[$number_arr];
         self::$nonce_img_upload = wp_nonce_field('img_god_upload', 'nonce_img_upload');
         self::$nonce_img_del = wp_nonce_field('img_god_del', 'nonce_img_del');
+
         require_once ('userprofile/user_profile_static/src/index.html');
     }
 
@@ -104,16 +108,6 @@ class User_profile_static
         return (is_null($img_id))? $form : wp_get_attachment_image($img_id, 'list_gods_img', false, array('class' => 'list-gods-img', 'data-image' => wp_get_attachment_url($img_id))).$form_del;
 
     }
-
-    protected static function response_list()
-    {
-        $list = new \WP_REST_Request();
-        $list->set_method('GET');
-        $list->set_route('/dental/v1/get-list-items');
-
-        return rest_do_request($list);
-    }
-
 
 
 }

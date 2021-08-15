@@ -1,15 +1,20 @@
-$.getScript( scriptUrl+"userprofile/user_profile_static/src/assets_img/css/styles.css");
-
-
 var conf = {
     "totalpages": $('#paginate-page').attr('count-page'), // Total number of pages
-    "show": 5, // [ Use Odd number ] How many to show
+    "show": 6, // [ Use Odd number ] How many to show
     "render": document.getElementById("paginate-page"), // Where to render the pagination
     "callback": callback // What happens when a page is clicked.
 };
 
 function callback(e){
     var page = e.target.getAttribute('data-page');
+    //document.location='http://localhost/stomshop?pages='+(page-1);
+    $('form#n_page > .n_page').attr('value', (page));
+    $('form#n_page > #send_page').attr('onclick', send_page());
+    $('#send_page').click();
+    function send_page(){
+        $( "#n_page" ).submit();
+    };
+
 
     /*$(function(){
         $.ajax({
@@ -24,7 +29,7 @@ function callback(e){
 
         })
     });*/
-    $('tbody.user-list').load(apiUrl+'/?page='+(page-1)
+   /* $('tbody.user-list').load(apiUrl+'/?page='+(page-1)
         +'&user_id='+selfUserId
         +'&id_wp_page='+$('.user-list').attr('id')
         +'&id_post='+selfIdPost
@@ -33,12 +38,12 @@ function callback(e){
     $.getScript( scriptUrl+"js/jquery.min.js");
     $.getScript( scriptUrl+"userprofile/user_profile_static/src/assets_img/intense.js");
     $.getScript( scriptUrl+"userprofile/user_profile_static/src/script.js");
-    $.getScript( scriptUrl+"userprofile/user_profile_static/src/readmore.js");
+    $.getScript( scriptUrl+"userprofile/user_profile_static/src/readmore.js");*/
 
      //alert(page);
     Paginate(page, conf)
 }
-Paginate(1, conf);
+Paginate($('form#n_page > .n_page').val(), conf);
 
 /*
 -----------------------------------------

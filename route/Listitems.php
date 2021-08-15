@@ -24,8 +24,9 @@ class Listitems extends \Form\profile\User_profile_static
 
     public function loadPage()
     {
+
         //$id = json_decode(str_replace('\\','', $_GET['user'] ));
-        if(!isset(self::$user_id)) {
+        /*if(!isset(self::$user_id)) {
             self::$user_id = $_GET['user_id'];
             self::$id_wp_user = $_GET['id_wp_page'];
             self::$id_post = $_GET['id_post'];
@@ -38,7 +39,7 @@ class Listitems extends \Form\profile\User_profile_static
             self::$profile = Profile_user::getUserProfileObject($_GET['id_wp_page'])[0];
         }
         $page = $_GET['page']??0;
-        $this->get_page($page = parent::$list[$page]);
+        $this->get_page($page = parent::$list[$page]);*/
     }
 
     private function get_page($page)

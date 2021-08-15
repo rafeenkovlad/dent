@@ -25,7 +25,7 @@ class DelImgList
 
     static function del_img()
     {
-        file_put_contents(__DIR__ . '/message.txt', print_r($_GET, true));
+        file_put_contents(__DIR__ . '/message.txt', print_r($_GET['nonce_img_del'], true));
 
         if(isset($_GET['nonce_img_del']) && self::$nonce )
         {

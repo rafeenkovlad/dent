@@ -26,7 +26,7 @@ class SetImgList
 
     static function set_img()
     {
-            //file_put_contents(__DIR__ . '/message.txt', print_r($_POST, true));
+            //file_put_contents(__DIR__ . '/message.txt', print_r(self::$nonce, true));
 
             if(isset($_POST['nonce_img_upload']) && self::$nonce )
             {
