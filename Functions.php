@@ -136,7 +136,7 @@ class Functions
 
                 $write = $update->execute(['name' => $thisArr['name'], 'sirial_number' => $thisArr['sirial_numb'],
                     'made_in_company' => $thisArr['made_in_company'], 'price' => $thisArr['price'],
-                    'litle_info' => $thisArr['litle_info'], 'id' => $bdListId[$i++]['id']]);
+                    'litle_info' => $thisArr['litle_info'], 'id' => $bdListId[$i++]['id'], 'img_url' => $thisArr['image']]);
                 if($write){ $n_strok++;}
             }
             $list->succesCsvResponse($n_strok);
@@ -158,7 +158,7 @@ class Functions
 
                     $write = $setCSV->execute(['name' => $thisArr['name'], 'sirial_number' => $thisArr['sirial_numb'],
                         'made_in_company' => $thisArr['made_in_company'], 'price' => $thisArr['price'],
-                        'litle_info' => $thisArr['litle_info'], 'company_id' => $wpUserId]);
+                        'litle_info' => $thisArr['litle_info'], 'company_id' => $wpUserId, 'img_url' => $thisArr['image']]);
                     if($write){ $n_strok++;}
                 }
             }

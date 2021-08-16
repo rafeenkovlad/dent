@@ -1,5 +1,5 @@
 bot/file/*
-csv/
+csv/list.csv
 img_company/*
 img_worker/*
 dbdental/Connect.php

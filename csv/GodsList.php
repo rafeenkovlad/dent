@@ -15,8 +15,8 @@ class GodsList
 
         for($i = 0; $data = fgetcsv($this->dataList, 4000, ','); $i++)
         {
-            [$name, $sirial_numb, $madeIn, $cost, $litleInfo] = $data;
-            $this->dataArr[] = ['name' => $name, 'sirial_numb' => $sirial_numb, 'made_in_company' => $madeIn, 'price' => $cost, 'litle_info' => $litleInfo];
+            [$name, $sirial_numb, $madeIn, $cost, $litleInfo, $image] = $data;
+            $this->dataArr[] = ['name' => $name, 'sirial_numb' => $sirial_numb, 'made_in_company' => $madeIn, 'price' => $cost, 'litle_info' => $litleInfo, 'image' => $image];
 
         }
         return $this->dataArr;
@@ -25,7 +25,7 @@ class GodsList
 
     public static function queryCSV()
     {
-        return self::$query = "INSERT INTO excel_list (name, sirial_number, made_in_company, price, litle_info, company_id) VALUES (:name, :sirial_number, :made_in_company, :price, :litle_info, :company_id);";
+        return self::$query = "INSERT INTO excel_list (name, sirial_number, made_in_company, price, litle_info, company_id, img_url) VALUES (:name, :sirial_number, :made_in_company, :price, :litle_info, :company_id, :img_url);";
 
     }
 
@@ -38,7 +38,7 @@ class GodsList
     //Обновление прайс листа компании
     public static function updateCSV()
     {
-        return self::$update = "UPDATE excel_list SET name = :name, sirial_number = :sirial_number, made_in_company = :made_in_company, price = :price, litle_info = :litle_info WHERE id = :id";
+        return self::$update = "UPDATE excel_list SET name = :name, sirial_number = :sirial_number, made_in_company = :made_in_company, price = :price, litle_info = :litle_info, img_url = :img_url WHERE id = :id";
     }
 
     //Удалить прайс компании для того, что бы записать новый прайс с большим количеством полей

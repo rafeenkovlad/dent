@@ -81,13 +81,16 @@ class User_profile_static
         require_once ('userprofile/user_profile_static/src/index.html');
     }
 
-    protected static function imgUrl($img_id,$id)
+    protected static function imgUrl($img_id,$id, $description)
     {
 
         $url_set = get_rest_url( 0, '/dental/v1/set-img-list');
         $url_del = get_rest_url( 0, '/dental/v1/del-img-list');
         //if(!$user_id==null)self::$user_id=$user_id;
         //if(!$id_wp_user==null)self::$id_wp_user=$id_wp_user;
+        preg_match('{^(https:|http:)(\/\/[A-Za-z0-9\/\-_.]*).(png|jpeg|jpg|gif)$}six', $img_id, $matches);
+        //проверка на первый и третий карманы
+        if(isset($matches[1]) && isset($matches[3])) $img_id = self::loadImg($img_id, $id, $description);
 
         $form = (self::$id_wp_user === self::$user_id)?
             '<form id="img_upload'.$id.'" method = "POST" action = "'.$url_set.'" enctype = "multipart/form-data">
@@ -106,6 +109,20 @@ class User_profile_static
                        <input type="button" id="img_god_submit" onclick="imgSubmit('.$img_id.')" name="img_del_submit" value="удалить" />
                        </form>' : NULL;
         return (is_null($img_id))? $form : wp_get_attachment_image($img_id, 'list_gods_img', false, array('class' => 'list-gods-img', 'data-image' => wp_get_attachment_url($img_id))).$form_del;
+
+    }
+//Загрузка изображений по запросу пользователя в cms если внешние ссылки еще существуют
+    private static function loadImg($file, $id, $description)
+    {
+
+        $img_id = media_sideload_image( $file, $post_id = get_the_ID(), $description, $return = 'id' );
+        try{
+            Profile_user::setImgUrlList($id, $img_id);
+            return $img_id;
+        }catch(Exception $e){
+            echo 'Exception: ',  $e->getMessage(), "\n";
+        }
+
 
     }
 

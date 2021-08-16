@@ -104,6 +104,21 @@ class Profile_user extends \Db
     //Отправка csv-list
     public function setListCsv()
     {
+       /* $link= 'https://stomshop.pro/image/cache/catalog/data/00_01/novgodent/ortopedicheskiy_matras_s_pamyatyu_formy_262-400x400.jpg';
+            $ch = curl_init();
+            curl_setopt($ch, CURLOPT_POST, 0);
+            curl_setopt($ch,CURLOPT_URL,$link);
+            curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+            $result=curl_exec($ch);
+            curl_close($ch);
+
+        $handle = fopen("temp.jpeg", "w+");
+        fwrite($handle, $result);
+        fclose($hande);
+        $img = fopen("temp.jpeg", "r");
+
+        var_dump($img);*/
+
         if(isset($_POST['sub'])) {
             $this->func()->sendCSV($this->db(), $_FILES['csv']['tmp_name'], get_current_user_id());
         }
