@@ -92,12 +92,23 @@ class Profile_user extends \Db
         return $profile;
     }
 
-    public static $page;
+    public static $lists, $number_page;
     public static function getUserListGods($id, $list = Gods::class)
     {
         $list::where('company_id', $id)
-        ->chunk(50, function($lists){
-            self::$page[] = $lists;
+        ->chunk(50, function($lists, $i=0){
+            if(isset($_GET['sn'])):
+                foreach($lists as $page){
+                    if ($page->sirial_number==$_GET['sn']) {
+                        $_GET['pages'] = $i;
+                        $number_page = &$_GET['pages'];
+                        break;
+                    }
+                }
+                $i++;
+            endif;
+            self::$lists[] = $lists;
+            //if(is_numeric($number_page)) return false;
         });
     }
 

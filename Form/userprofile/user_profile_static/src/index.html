@@ -6,6 +6,30 @@
     </div>
     <div class="profile_text">
         <div>
+            <div class="profile_text1">Рейтинг:
+            <div class="rait-container">
+                <div class="inner">
+                    <div class="rating">
+                        <div class="rating-users">
+                            <i class="icon-user"></i>
+                        </div>
+                    </div>
+
+                    <div class="histo">
+
+                        <span class="bar-block">
+                            <span id="bar-one" class="bar" data-rait="<?= self::$like_sum ?>">
+                                <span class="index-count"><?= self::$like_sum ?></span>&nbsp;
+                            </span>
+                        </span>
+
+                    </div>
+                </div>
+            </div>
+            </div>
+
+        </div>
+        <div>
             <div class="profile_text1">Компания: <?= (self::$profile->name_company !== NULL) ? self::$profile->name_company : self::$profile->full_name ?></div>
         </div>
         <div>
@@ -17,9 +41,7 @@
        <!-- <div>
             <div class="profile_text1">email: <?= self::$profile->email ?></div>
         </div> --!>
-        <div>
-            <div class="profile_text1">Рейтинг: <?= self::$like_sum ?></div>
-        </div>
+
 
     </div>
 </div>
@@ -42,7 +64,7 @@
     <?php foreach (self::$page as $object): ?>
     <tr>
         <td><?= $object->id ?></td>
-        <td class="profile_click_chat"><?= $object->name ?></td>
+        <td class="profile_click_name"><?= $object->name ?></td>
         <td class="profile_click_sn"><?= $object->sirial_number ?></td>
         <td><?= $object->made_in_company ?></td>
         <td><?= $object->price ?></td>
@@ -64,7 +86,6 @@
 <script>
     $(document).ready(function(){
         function blockFinder(el){
-            console.log(el)
             $('html, body').animate({scrollTop: $(el).offset().top - 300}, 1000);
             setTimeout(function(){ $(el).css('background', 'rgb(215 239 247)'); }, 500);
             setTimeout(function(){ $(el).css('background', '#ffffff'); }, 700);
@@ -73,16 +94,19 @@
         function findTxt(param){
             setTimeout(function(){
                 let el = $($('.profile_click_sn:contains("' + param + '")')[0]);
+                let ol = $($('.profile_click_name:contains("' + param + '")')[0]);
                 if(el.length !== 0){
                     blockFinder($(el).parent());
                 }
-                // $('#sohbet').animate({scrollTop: $("#sohbet").scrollTop() + $($('.message1:contains("' + param + '")')[0]).offset().top - $('#sohbet').offset().top}, 1000);
+                if(ol.length !== 0){
+                    blockFinder($(ol).parent());
+                }
+                //$('#sohbet').animate({scrollTop: $("#sohbet").scrollTop() + $($('.message1:contains("' + param + '")')[0]).offset().top - $('#sohbet').offset().top}, 1000);
             }, 600);
         };
 
         var url = location.href.split('sn=')[1];
         if(url !== undefined){
-            console.log('2')
             findTxt(url);
         }
         // var tops = $('#tg_rounded_hei').offset().top;

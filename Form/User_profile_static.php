@@ -18,7 +18,7 @@ class User_profile_static
                 //Открытие картинки в полный размер на странице с товарным листом
                 wp_register_style('gods_list_css', plugins_url('db/Form/userprofile/user_profile_static/src/assets_img/css/styles.css'));
                 wp_enqueue_style('gods_list_css');
-                wp_register_style('bootstrap_css', '//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css');
+                wp_register_style('bootstrap_css', '//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css');
                 wp_enqueue_style('bootstrap_css');
                 wp_register_script('gods_list_js', plugins_url('db/Form/userprofile/user_profile_static/src/assets_img/intense.js'));
                 wp_enqueue_script('gods_list_js');
@@ -30,12 +30,15 @@ class User_profile_static
                 wp_register_script('min_js', plugins_url('db/Form/js/jquery.min.js'));
                 wp_register_script('readmore_js', plugins_url('db/Form/userprofile/user_profile_static/src/readmore.js'));
                 wp_register_script('paginate_js', plugins_url('db/Form/userprofile/user_profile_static/src/pagination.js'));
+                wp_register_script('rait_js', plugins_url('db/Form/userprofile/user_profile_static/src/rait.js'));
                 add_action('wp_footer', function(){
 
                     wp_enqueue_script('min_js');
                     wp_enqueue_script('userprofile_input_js');
                     wp_enqueue_script('readmore_js');
                     wp_enqueue_script('paginate_js');
+                    wp_enqueue_script('rait_js');
+
                     /*wp_localize_script('paginate_js', 'selfUserId', self::$user_id);
                     wp_localize_script('paginate_js', 'selfIdPost', self::$id_post);
                     wp_localize_script('paginate_js', 'apiUrl', get_rest_url(0,'/dental/v1/get-list-items'));
@@ -51,6 +54,7 @@ class User_profile_static
         do_action('register_route_set_img');
         add_action('register_route_del_img', [DelImgList::class, 'register_route']);
         do_action('register_route_del_img');
+        //search items in page
 
         /*add_action('register_route_list_items', function(){
             if(empty(self::$listItems)){
@@ -69,7 +73,7 @@ class User_profile_static
         self::$profile = Profile_user::getUserProfileObject(self::$id_wp_user)[0];
         self::$profile->company_logo = self::$profile->company_logo ?? self::$profile->img;
         Profile_user::getUserListGods(self::$id_wp_user);
-        self::$list = Profile_user::$page;
+        self::$list = Profile_user::$lists;
         self::$count_page = sizeof(self::$list);
         self::$user_id = wp_get_current_user()->ID;
         self::$like_sum = Profile_user::like_sum_author(self::$id_wp_user);
@@ -125,6 +129,5 @@ class User_profile_static
 
 
     }
-
 
 }

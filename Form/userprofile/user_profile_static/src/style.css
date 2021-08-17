@@ -80,3 +80,79 @@ ul.pagination{
     background-color: #f1f1f1;
 }
 
+.rait-container {
+    width: 80%;
+
+}
+
+.rait-container  .inner {
+    background-color: white;
+    overflow: hidden;
+    position: relative;
+
+}
+
+.rait-container  .rating {
+    float: left;
+    width:5%;
+    margin-right: 1%;
+    text-align: center;
+}
+
+.rait-container  .rating-users {
+    font-size: 21px;
+}
+
+.rait-container  .histo {
+
+    width: 94%;
+
+}
+
+
+
+.rait-container  .bar-block {
+    margin-left: 5px;
+    color: black;
+    display: block;
+    float: left;
+    width: 75%;
+    position: relative;
+}
+
+.rait-container  .bar {
+    display: block;
+}
+
+.rait-container  #bar-five {
+    width: 0;
+    background-color: #9FC05A;
+}
+
+.rait-container  #bar-four {
+    width: 0;
+    background-color: #ADD633;
+}
+
+.rait-container  #bar-three {
+    width: 0;
+    background-color: #FFD834;
+}
+
+.rait-container  #bar-two {
+    width: 0;
+    background-color: #FFB234;
+}
+
+.rait-container  #bar-one {
+    width: 0;
+    background-color: #FF8B5A;
+}
+
+.index-count{
+}
+.icon-star{
+    float:right;
+    padding-top:5px;
+    color:green;
+}
