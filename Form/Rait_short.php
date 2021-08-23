@@ -18,7 +18,7 @@ class Rait_short extends \Db
             wp_register_style('like_css', plugins_url('db/Form/likes/style.css'));
             wp_enqueue_style('like_css');
             wp_register_script('header_script_js', plugins_url('db/Form/likes/header-script.js'));
-            wp_register_script('likes_min_js', plugins_url('db/Form/likes/jquery.min.js'));
+            wp_register_script('likes_min_js', plugins_url('db/Form/js/jquery.min.js'));
             wp_enqueue_script('likes_min_js');
         });
         add_action('wp_footer', function() {
@@ -35,12 +35,13 @@ class Rait_short extends \Db
         return ob_get_clean();
     }
 
-    private function get_count_like()
+    public function get_count_like()
     {
         $this->post_id = get_the_ID();
         $this->objAuthor = get_user_by('login', get_the_author_meta('login'));
         $this->func()->likeData($this->post_id, $this->objAuthor->data->ID, [$this->objUser->data->ID => $this->objUser->data->display_name]);
-        print_r(sizeof($this->func()->likeUser($this->db())));
+        $likeCount = sizeof($this->func()->likeUser($this->db()));
+        print_r($likeCount);
 
         if($_POST['addlike'] === '+1')
             [
