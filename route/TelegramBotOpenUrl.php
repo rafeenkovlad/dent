@@ -19,24 +19,24 @@ class TelegramBotOpenUrl extends \Db
     {
         return [
             'methods' => 'GET',
-            'callback' => [&$this, 'searchProfile']
+            'callback' => [&$this, 'searchProfile'],
+            'permission_callback' => fn()=> isset($_GET['id_user'])
         ];
     }
 
     public function searchProfile()
     {
-        if(isset($_GET['id_user']) and isset($_GET['sn']))
+        if(isset($_GET['sn']))
         {
             $query = new \WP_Query('cat=2');
             foreach($query->posts as $pageProfile)
             {
-                if ($pageProfile->post_author === $_GET['id_user']): return $this->redirect($pageProfile);
-                else:
-                    wp_redirect(get_site_url(null, '', 'https'));
-                    Alert::doactionAlert('Такого пользователя больше не существует.', 'Не удалось найти:');
-                    exit;
-                endif;
+                if ($pageProfile->post_author === $_GET['id_user']) return $this->redirect($pageProfile);
             }
+
+            wp_redirect(get_site_url(null, '', 'https'));
+            Alert::doactionAlert('Такого пользователя больше не существует.', 'Не удалось найти:');
+            exit;
         }
     }
 
