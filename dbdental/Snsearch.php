@@ -47,7 +47,8 @@ class Snsearch
 
     public function addUrl($name, $sirial_number, $company_id)
     {
-        return "<a href ='https://dentaline.info/wp-json/dental/v1/get-telegram-url?id_user={$company_id}&sn={$sirial_number}'> <b>{$name}</b> </a> : {$sirial_number}";
+        $url = get_site_url(null,'/wp-json/dental/v1/get-telegram-url');
+        return "<a href ='{$url}?id_user={$company_id}&sn={$sirial_number}'> <b>{$name}</b> </a> : {$sirial_number}";
     }
 
     private function editResponseTelegramGroup($arr)
